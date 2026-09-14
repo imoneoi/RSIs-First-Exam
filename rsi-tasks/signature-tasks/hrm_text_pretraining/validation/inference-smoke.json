@@ -1,0 +1,52 @@
+{
+  "status": "completed",
+  "diagnostic": true,
+  "reward": 0.0,
+  "weights_sha256": "ec3d052839acf88dfee78c5841c28fea39f2135449e487daac6a19ec0e6515fc",
+  "results": {
+    "GSM8k": {
+      "n": 1,
+      "acc": 0.0,
+      "invalid": 1.0
+    },
+    "MATH": {
+      "n": 1,
+      "acc": 0.0,
+      "invalid": 1.0
+    },
+    "DROP": {
+      "n": 1,
+      "em": 0.0,
+      "f1": 0.0
+    },
+    "MMLU": {
+      "n_abstract_algebra": 1,
+      "acc_abstract_algebra": 0.25,
+      "invalid_abstract_algebra": 1.0,
+      "n": 1,
+      "acc": 0.25,
+      "invalid": 1.0
+    },
+    "ARC": {
+      "n": 1,
+      "acc": 0.25,
+      "invalid": 1.0
+    },
+    "HellaSwag": {
+      "n": 1,
+      "acc": 0.25,
+      "invalid": 1.0
+    },
+    "Winogrande": {
+      "n": 1,
+      "acc": 0.5,
+      "invalid": 1.0
+    },
+    "BoolQ": {
+      "n": 1,
+      "acc": 0.5,
+      "invalid": 1.0
+    }
+  },
+  "provenance_note": "Artifact metrics and declared-budget consistency verified; source/data/compute provenance requires trajectory review."
+}

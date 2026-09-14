@@ -1,0 +1,70 @@
+{
+  "check-task-fields.sh": {
+    "passed": true,
+    "output": "Checking <task>/task.toml...\nAll task.toml files contain the required fields with valid values\n"
+  },
+  "check-task-slug.sh": {
+    "passed": true,
+    "output": "PASS <task> (1 tokens)\n"
+  },
+  "check-gpu-types.sh": {
+    "passed": true,
+    "output": "All task.toml gpu_types values are canonical\n"
+  },
+  "check-task-absolute-path.sh": {
+    "passed": true,
+    "output": ""
+  },
+  "check-task-timeout.sh": {
+    "passed": true,
+    "output": "Checking <task>/task.toml...\nAll task.toml timeouts satisfy the 5h cap or an explicit signature smoke-only contract\n"
+  },
+  "check-instruction-suffix.sh": {
+    "passed": true,
+    "output": "Checking <task>...\nAll instruction.md files end with the canonical timeout/anti-cheat line\n"
+  },
+  "check-dockerfile-platform.sh": {
+    "passed": true,
+    "output": ""
+  },
+  "check-dockerfile-sanity.sh": {
+    "passed": true,
+    "output": ""
+  },
+  "check-dockerfile-references.sh": {
+    "passed": true,
+    "output": ""
+  },
+  "check-test-file-references.sh": {
+    "passed": true,
+    "output": ""
+  },
+  "check-canary.sh": {
+    "passed": true,
+    "output": "All files contain the required canary string\n"
+  },
+  "check-pip-pinning.sh": {
+    "passed": true,
+    "output": "Checking <task>...\nAll pip / uv pip / uvx --with installs are pinned\n"
+  },
+  "check-pytest-version.sh": {
+    "passed": true,
+    "output": "Checking <task>...\nPASS\n"
+  },
+  "check-test-sh-sanity.sh": {
+    "passed": true,
+    "output": ""
+  },
+  "check-trial-network-fetch.sh": {
+    "passed": true,
+    "output": "Skipping <task> (shared verifier mode; check applies in separate mode only)\nNo external trial-time fetches in tests/test.sh\n"
+  },
+  "check-verifier-tooling-baked.sh": {
+    "passed": true,
+    "output": "All separate-verifier tasks bake their verifier tooling into the image\n"
+  },
+  "check-compose-host-binds.sh": {
+    "passed": true,
+    "output": "PASS <task>\n"
+  }
+}

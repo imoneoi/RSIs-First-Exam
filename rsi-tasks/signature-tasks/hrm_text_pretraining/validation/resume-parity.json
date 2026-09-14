@@ -1,0 +1,139 @@
+{
+  "comparison": {
+    "step": {
+      "continuous": 13,
+      "resumed": 13,
+      "exact_equal": true
+    },
+    "epoch": {
+      "continuous": 1,
+      "resumed": 1,
+      "exact_equal": true
+    },
+    "batch_in_epoch": {
+      "continuous": 13,
+      "resumed": 13,
+      "exact_equal": true
+    },
+    "packed_tokens": {
+      "continuous": 171355,
+      "resumed": 171355,
+      "exact_equal": true
+    },
+    "lr": {
+      "continuous": 1.625e-06,
+      "resumed": 1.625e-06,
+      "exact_equal": true
+    },
+    "bp_steps": {
+      "continuous": 2,
+      "resumed": 2,
+      "exact_equal": true
+    },
+    "train/loss": {
+      "continuous": 11.389534950256348,
+      "resumed": 11.389388084411621,
+      "exact_equal": false
+    },
+    "train/accuracy": {
+      "continuous": 0.0004449573752935976,
+      "resumed": 0.00045886231237091124,
+      "exact_equal": false
+    },
+    "train/exact_accuracy": {
+      "continuous": 0.0,
+      "resumed": 0.0,
+      "exact_equal": true
+    }
+  },
+  "all_exact_equal": false,
+  "full_run_dir": "/sg-pretrain/one/hrm-text-rsi-runs/size-l-full-20260914",
+  "resume_run_dir": "/sg-pretrain/one/hrm-text-rsi-runs/size-l-resume-smoke-20260914",
+  "independent_fresh_run_comparison_first_12_steps": [
+    {
+      "step": 1,
+      "original_loss": 11.575600624084473,
+      "fresh_loss": 11.575600624084473,
+      "loss_delta": 0.0,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 2,
+      "original_loss": 11.571904182434082,
+      "fresh_loss": 11.571929931640625,
+      "loss_delta": 2.574920654296875e-05,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 3,
+      "original_loss": 11.5810546875,
+      "fresh_loss": 11.581019401550293,
+      "loss_delta": -3.528594970703125e-05,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 4,
+      "original_loss": 11.569343566894531,
+      "fresh_loss": 11.569280624389648,
+      "loss_delta": -6.29425048828125e-05,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 5,
+      "original_loss": 11.544942855834961,
+      "fresh_loss": 11.544760704040527,
+      "loss_delta": -0.00018215179443359375,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 6,
+      "original_loss": 11.534621238708496,
+      "fresh_loss": 11.534655570983887,
+      "loss_delta": 3.4332275390625e-05,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 7,
+      "original_loss": 11.52502727508545,
+      "fresh_loss": 11.524998664855957,
+      "loss_delta": -2.86102294921875e-05,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 8,
+      "original_loss": 11.521799087524414,
+      "fresh_loss": 11.521554946899414,
+      "loss_delta": -0.000244140625,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 9,
+      "original_loss": 11.482690811157227,
+      "fresh_loss": 11.482843399047852,
+      "loss_delta": 0.000152587890625,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 10,
+      "original_loss": 11.470460891723633,
+      "fresh_loss": 11.470593452453613,
+      "loss_delta": 0.00013256072998046875,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 11,
+      "original_loss": 11.443567276000977,
+      "fresh_loss": 11.443644523620605,
+      "loss_delta": 7.724761962890625e-05,
+      "packed_tokens_equal": true
+    },
+    {
+      "step": 12,
+      "original_loss": 11.407966613769531,
+      "fresh_loss": 11.407747268676758,
+      "loss_delta": -0.0002193450927734375,
+      "packed_tokens_equal": true
+    }
+  ],
+  "interpretation": "Data/schedule resume agrees exactly, saved model/optimizer tensors roundtrip exactly, but numeric training metrics are not bitwise reproducible across independent fresh runs in this BF16/FlashAttention3 environment. Step13 loss difference is comparable to prior fresh-run differences; exact trajectory parity is not established."
+}

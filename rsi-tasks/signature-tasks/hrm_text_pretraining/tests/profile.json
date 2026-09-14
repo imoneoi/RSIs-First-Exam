@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "l-8gpu-4epochs",
+  "size": "L",
+  "gpus": 8,
+  "epochs": 4,
+  "minimum_training_epochs": 1,
+  "gpu_hours_cap": 512.0,
+  "attempt_wall_seconds": 230400,
+  "agent_timeout_seconds": 259200,
+  "verifier_timeout_seconds": 86400,
+  "verifier_gpus": 1,
+  "max_weights_bytes": 16000000000,
+  "max_source_bytes": 16000000,
+  "budget_note": "Task limits, not measured runtimes. Size identifies the starting baseline; architecture changes are allowed."
+}

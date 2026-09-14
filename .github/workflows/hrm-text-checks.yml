@@ -1,0 +1,60 @@
+name: HRM-Text source and CPU checks
+
+on:
+  pull_request:
+    paths:
+      - "rsi-tasks/signature-tasks/hrm_text_pretraining/**"
+      - "checks/check*.sh"
+      - "checks/check_hrm_text.py"
+      - "checks/test_task_timeout.py"
+      - ".github/workflows/static-checks.yml"
+      - ".github/workflows/hrm-text-checks.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hrm-text-checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cpu:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - uses: actions/checkout@v4
+        with:
+          repository: sapientinc/HRM-Text
+          ref: aaa948ea674fd84b7bc455c9cfb455ecfefdf914
+          path: .ci/hrm-text
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: sapientinc/data_io
+          ref: c82cd5f66459c5e66709e8430eccf8daecd0ca7d
+          path: .ci/data-io
+          persist-credentials: false
+      - name: Install CPU test dependencies
+        run: |
+          python -m pip install torch==2.10.0 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/requirements-data.txt safetensors==0.7.0
+      - name: Run all static checks and CPU regressions
+        # Linux root is required for real chroot/seccomp tests; skipped tests fail.
+        # No data or weights are downloaded, and no GPU training is launched.
+        run: |
+          sudo "$(command -v python)" checks/check_hrm_text.py \
+            --hrm-source .ci/hrm-text --data-io-source .ci/data-io \
+            --report /tmp/hrm-text-checks.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hrm-text-checks
+          path: /tmp/hrm-text-checks.json
+          if-no-files-found: ignore

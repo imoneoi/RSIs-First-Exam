@@ -1,0 +1,4 @@
+environment/staged/
+tests/staged/
+__pycache__/
+*.pyc

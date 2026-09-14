@@ -1,0 +1,368 @@
+{
+  "xl-2gpu-1epoch": {
+    "snapshot": "/tmp/hrm-profile-compiler-review-kck8k69z/xl-2gpu-1epoch",
+    "profile": {
+      "schema_version": 1,
+      "id": "xl-2gpu-1epoch",
+      "size": "XL",
+      "gpus": 2,
+      "epochs": 1,
+      "minimum_training_epochs": 1,
+      "gpu_hours_cap": 256.0,
+      "attempt_wall_seconds": 460800,
+      "agent_timeout_seconds": 489600,
+      "verifier_timeout_seconds": 86400,
+      "verifier_gpus": 1,
+      "max_weights_bytes": 16000000000,
+      "max_source_bytes": 16000000,
+      "budget_note": "Task limits, not measured runtimes. Size identifies the starting baseline; architecture changes are allowed."
+    },
+    "compiled_task_id": "hrm-text-pretraining-xl-2gpu-1epoch",
+    "compiled_work_gpus": 2,
+    "compiled_judge_gpus": 1,
+    "compiled_agent_seconds": 489600.0,
+    "compiled_judge_seconds": 86400.0,
+    "compiled_work_network": {
+      "mode": "no-network",
+      "allowlist": []
+    },
+    "compiled_judge_network": {
+      "mode": "no-network",
+      "allowlist": []
+    },
+    "bluevela_8gpu_node": {
+      "work_gpus": 2,
+      "verifier_gpus": 1,
+      "total_gpus": 3,
+      "cpu_slots": 64,
+      "memory_mb": 786432,
+      "local_tmp_mb": 2097152,
+      "build_walltime": "12:00",
+      "run_walltime": "160:00"
+    },
+    "local_exact_work_pool": {
+      "authorized_pool": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 1,
+            "uuid": "GPU-review-1",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "work": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 1,
+            "uuid": "GPU-review-1",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "judge": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "judge_mode": "release-all"
+    }
+  },
+  "l-8gpu-1epoch": {
+    "snapshot": "/tmp/hrm-profile-compiler-review-kck8k69z/l-8gpu-1epoch",
+    "profile": {
+      "schema_version": 1,
+      "id": "l-8gpu-1epoch",
+      "size": "L",
+      "gpus": 8,
+      "epochs": 1,
+      "minimum_training_epochs": 1,
+      "gpu_hours_cap": 128.0,
+      "attempt_wall_seconds": 57600,
+      "agent_timeout_seconds": 86400,
+      "verifier_timeout_seconds": 86400,
+      "verifier_gpus": 1,
+      "max_weights_bytes": 16000000000,
+      "max_source_bytes": 16000000,
+      "budget_note": "Task limits, not measured runtimes. Size identifies the starting baseline; architecture changes are allowed."
+    },
+    "compiled_task_id": "hrm-text-pretraining-l-8gpu-1epoch",
+    "compiled_work_gpus": 8,
+    "compiled_judge_gpus": 1,
+    "compiled_agent_seconds": 86400.0,
+    "compiled_judge_seconds": 86400.0,
+    "compiled_work_network": {
+      "mode": "no-network",
+      "allowlist": []
+    },
+    "compiled_judge_network": {
+      "mode": "no-network",
+      "allowlist": []
+    },
+    "bluevela_8gpu_node": {
+      "work_gpus": 8,
+      "verifier_gpus": 1,
+      "total_gpus": 8,
+      "cpu_slots": 64,
+      "memory_mb": 786432,
+      "local_tmp_mb": 2097152,
+      "build_walltime": "12:00",
+      "run_walltime": "48:00"
+    },
+    "local_exact_work_pool": {
+      "authorized_pool": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 1,
+            "uuid": "GPU-review-1",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 2,
+            "uuid": "GPU-review-2",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 3,
+            "uuid": "GPU-review-3",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 4,
+            "uuid": "GPU-review-4",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 5,
+            "uuid": "GPU-review-5",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 6,
+            "uuid": "GPU-review-6",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 7,
+            "uuid": "GPU-review-7",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "work": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 1,
+            "uuid": "GPU-review-1",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 2,
+            "uuid": "GPU-review-2",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 3,
+            "uuid": "GPU-review-3",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 4,
+            "uuid": "GPU-review-4",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 5,
+            "uuid": "GPU-review-5",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 6,
+            "uuid": "GPU-review-6",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 7,
+            "uuid": "GPU-review-7",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "judge": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "judge_mode": "release-all"
+    }
+  },
+  "l-8gpu-4epochs": {
+    "snapshot": "/tmp/hrm-profile-compiler-review-kck8k69z/l-8gpu-4epochs",
+    "profile": {
+      "schema_version": 1,
+      "id": "l-8gpu-4epochs",
+      "size": "L",
+      "gpus": 8,
+      "epochs": 4,
+      "minimum_training_epochs": 1,
+      "gpu_hours_cap": 512.0,
+      "attempt_wall_seconds": 230400,
+      "agent_timeout_seconds": 259200,
+      "verifier_timeout_seconds": 86400,
+      "verifier_gpus": 1,
+      "max_weights_bytes": 16000000000,
+      "max_source_bytes": 16000000,
+      "budget_note": "Task limits, not measured runtimes. Size identifies the starting baseline; architecture changes are allowed."
+    },
+    "compiled_task_id": "hrm-text-pretraining-l-8gpu-4epochs",
+    "compiled_work_gpus": 8,
+    "compiled_judge_gpus": 1,
+    "compiled_agent_seconds": 259200.0,
+    "compiled_judge_seconds": 86400.0,
+    "compiled_work_network": {
+      "mode": "no-network",
+      "allowlist": []
+    },
+    "compiled_judge_network": {
+      "mode": "no-network",
+      "allowlist": []
+    },
+    "bluevela_8gpu_node": {
+      "work_gpus": 8,
+      "verifier_gpus": 1,
+      "total_gpus": 8,
+      "cpu_slots": 64,
+      "memory_mb": 786432,
+      "local_tmp_mb": 2097152,
+      "build_walltime": "12:00",
+      "run_walltime": "96:00"
+    },
+    "local_exact_work_pool": {
+      "authorized_pool": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 1,
+            "uuid": "GPU-review-1",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 2,
+            "uuid": "GPU-review-2",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 3,
+            "uuid": "GPU-review-3",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 4,
+            "uuid": "GPU-review-4",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 5,
+            "uuid": "GPU-review-5",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 6,
+            "uuid": "GPU-review-6",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 7,
+            "uuid": "GPU-review-7",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "work": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 1,
+            "uuid": "GPU-review-1",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 2,
+            "uuid": "GPU-review-2",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 3,
+            "uuid": "GPU-review-3",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 4,
+            "uuid": "GPU-review-4",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 5,
+            "uuid": "GPU-review-5",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 6,
+            "uuid": "GPU-review-6",
+            "name": "NVIDIA H100 80GB HBM3"
+          },
+          {
+            "index": 7,
+            "uuid": "GPU-review-7",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "judge": {
+        "devices": [
+          {
+            "index": 0,
+            "uuid": "GPU-review-0",
+            "name": "NVIDIA H100 80GB HBM3"
+          }
+        ]
+      },
+      "judge_mode": "release-all"
+    }
+  }
+}

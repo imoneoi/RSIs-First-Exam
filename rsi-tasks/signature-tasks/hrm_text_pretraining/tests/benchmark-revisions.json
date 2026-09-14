@@ -1,0 +1,10 @@
+{
+  "gsm8k": "740312add88f781978c0658806c59bc2815b9866",
+  "EleutherAI/hendrycks_math": "21a5633873b6a120296cce3e2df9d5550074f4a3",
+  "EleutherAI/drop": "619386fc7ffe6dace3cc6d3483c69b164ebf6bf3",
+  "cais/mmlu": "c30699e8356da336a370243923dbaf21066bb9fe",
+  "allenai/ai2_arc": "210d026faf9955653af8916fad021475a3f00453",
+  "Rowan/hellaswag": "218ec52e09a7e7462a5400043bb9a69a41d06b76",
+  "allenai/winogrande": "01e74176c63542e6b0bcb004dcdea22d94fb67b5",
+  "google/boolq": "35b264d03638db9f4ce671b711558bf7ff0f80d5"
+}
