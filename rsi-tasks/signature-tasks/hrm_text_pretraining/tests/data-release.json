@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "repo_id": "sapientinc/hrm-text-rsi-sampled-20260923",
-  "revision": "4e54b5622ebb2e6ca722412ce97789e79fd540b4",
-  "manifest_sha256": "d9e9ed1f7889541e35c70923940a7e8682976b26bfbef2c16e9dc743820f7635",
+  "revision": "d2a3a898e149546d4e53c7118fd77b76e257c97e",
+  "manifest_sha256": "7f5ba88b53b0a7acf78e596b2c06840b803c08dfae015fc4548ae4fab35dd7ce",
   "release": "20260923",
   "format": "hrm-text-prefixlm-v1",
   "available_epoch_ids": [
@@ -10,5 +10,165 @@
     1,
     2,
     3
-  ]
+  ],
+  "training_manifest": {
+    "available_epoch_count": 4,
+    "available_epoch_ids": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "canonical_dataset": {
+      "available_epoch_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "format": "hrm-text-prefixlm-v1",
+      "release": "20260923",
+      "repo_id": "sapientinc/hrm-text-rsi-sampled-20260923"
+    },
+    "sampled_files": {
+      "epoch_0/inst_len.npy": {
+        "bytes": 471021224,
+        "sha256": "039502e25013cf0df8216085d30aef45a7974fc7f02e45b56f4cb7f702f3090a"
+      },
+      "epoch_0/inst_start.npy": {
+        "bytes": 471021224,
+        "sha256": "5ffdf3460392e292ba9756a8eff571fa552696ec46ec677c0610e1ed716d92fa"
+      },
+      "epoch_0/resp_len.npy": {
+        "bytes": 471021224,
+        "sha256": "1615072362a15de3d1fc7b6a79258ca849e47f40fd754fad3f2a9954e699259e"
+      },
+      "epoch_0/resp_start.npy": {
+        "bytes": 471021224,
+        "sha256": "c46366925005aa32f12e093e611ca2092fa9a5fe1dc533498185592f8df61082"
+      },
+      "epoch_1/inst_len.npy": {
+        "bytes": 471021224,
+        "sha256": "164d90380dfcc9c79e1bb05a0db53bdc9e02be171da4faf678a0cfdfc39df7a0"
+      },
+      "epoch_1/inst_start.npy": {
+        "bytes": 471021224,
+        "sha256": "3c108a0f2cdf6b5e30c0a741bff514d21c9b3987e10dff5c1c67e7785ec743d7"
+      },
+      "epoch_1/resp_len.npy": {
+        "bytes": 471021224,
+        "sha256": "8bd3e9a131811bcdfdda48a1ab25f41f6b3dde442023a35afe6dedcef7f551d6"
+      },
+      "epoch_1/resp_start.npy": {
+        "bytes": 471021224,
+        "sha256": "14c10dca5756f2eaaed7994dcaad9166441045f461cd877e558525eb1f78bc64"
+      },
+      "epoch_2/inst_len.npy": {
+        "bytes": 471021224,
+        "sha256": "a68189304d790dfefab1e38cb7380337854e8982fe985b9e387912da09735c05"
+      },
+      "epoch_2/inst_start.npy": {
+        "bytes": 471021224,
+        "sha256": "05fd6ab05c17b8e32596bd4a9f242aca0bfb2505c1c6252afbffed37504d2ee0"
+      },
+      "epoch_2/resp_len.npy": {
+        "bytes": 471021224,
+        "sha256": "82baf9367cd61c990618b55bbc439a6724f8d7e05a68a2f139f2c47aa07d3d1d"
+      },
+      "epoch_2/resp_start.npy": {
+        "bytes": 471021224,
+        "sha256": "289a1ab4011c7622ac30a366c97149ebc4e7a311e9feaea0a292c4e7f7f9ad47"
+      },
+      "epoch_3/inst_len.npy": {
+        "bytes": 471021224,
+        "sha256": "58726be5165a2cb5d12be37563f2473fd90570e83ae3a210db661b040d40b09a"
+      },
+      "epoch_3/inst_start.npy": {
+        "bytes": 471021224,
+        "sha256": "e68c1a037346d3bdd35cecd86450125fea7b9d478823b059810beaef1a6f1991"
+      },
+      "epoch_3/resp_len.npy": {
+        "bytes": 471021224,
+        "sha256": "4b92b9e07945e5d15c5f5f46bd681dd9bdea2c2296ad92eff9a024eb4b8da1cf"
+      },
+      "epoch_3/resp_start.npy": {
+        "bytes": 471021224,
+        "sha256": "bef20f55b700b2815310f2e00e5db577aa86ae6198a3885c0417c80ef09d3768"
+      },
+      "metadata.json": {
+        "bytes": 390,
+        "sha256": "acd8adb38965b81b48ee0c694f02b860fb859191f5f49a2bd70e9ed8b89f28f6"
+      },
+      "tokens.npy": {
+        "bytes": 85190885084,
+        "sha256": "3a6275b5c24126ba26a647103dcf601c078cb5cca027cf52daaea8f9356fe106"
+      }
+    },
+    "sampled_integrity": "full_sha256",
+    "schema_version": 1,
+    "tokenizer": {
+      "config.json": {
+        "bytes": 23,
+        "sha256": "86d49337f51b848491007eba678aaafb2f0960510a11980abdb063bb3b0d8530"
+      },
+      "tokenizer.json": {
+        "bytes": 4732933,
+        "sha256": "c4bc6b482d86a8678162819010ac2992686a3e5fab47943eb8809b1aeee2ab39"
+      }
+    },
+    "validation": {
+      "available_epoch_count": 4,
+      "available_epoch_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "epochs": [
+        {
+          "epoch": 0,
+          "rows": 58877637,
+          "tokens_including_ar_shift": 15329902486
+        },
+        {
+          "epoch": 1,
+          "rows": 58877637,
+          "tokens_including_ar_shift": 15330035551
+        },
+        {
+          "epoch": 2,
+          "rows": 58877637,
+          "tokens_including_ar_shift": 15329851662
+        },
+        {
+          "epoch": 3,
+          "rows": 58877637,
+          "tokens_including_ar_shift": 15330273848
+        }
+      ],
+      "metadata": {
+        "max_seq_len": 4097,
+        "tokenizer_info": {
+          "boa": "<|box_start|>",
+          "boq": "<|im_start|>",
+          "condition_mapping": {
+            "cot": "<|object_ref_end|>",
+            "direct": "<|object_ref_start|>",
+            "noisy": "<|quad_start|>",
+            "synth": "<|quad_end|>"
+          },
+          "eoa": "<|box_end|>",
+          "eoq": "<|im_end|>",
+          "tokenizer_path": "/datasets/hrm-text/tokenizer",
+          "vocab_size": 65536
+        },
+        "total_length": 15330015887,
+        "vocab_size": null
+      },
+      "token_array_dtype": "uint16",
+      "token_array_shape": [
+        42595442478
+      ]
+    }
+  }
 }

@@ -1,1 +1,0 @@
-{"batch_in_epoch": 13, "bp_steps": 2, "epoch": 1, "lr": 1.625e-06, "packed_tokens": 171355, "packed_tokens_per_second": 1975.359736129494, "step": 13, "step_seconds": 86.74622493609786, "token_slots_per_second": 1983.1641103313536, "train/accuracy": 0.00045886231237091124, "train/exact_accuracy": 0.0, "train/loss": 11.389388084411621}

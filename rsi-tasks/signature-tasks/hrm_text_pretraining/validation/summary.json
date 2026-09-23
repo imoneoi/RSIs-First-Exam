@@ -1,0 +1,123 @@
+{
+  "current_cleanup_validation": {
+    "cpu_tests": 150,
+    "skipped": 0,
+    "static_checks": 20,
+    "status": "passed",
+    "suites": {
+      "data_staging": 31,
+      "evaluator_profiles": 66,
+      "timeout_policy": 7,
+      "training_accounting": 46
+    }
+  },
+  "data_cleanup": {
+    "authenticated_training_tokenizer_bytes": 92731958014,
+    "calibration_policy": "Do not silently retarget prior calibration or resume audit identities; require recalibration or an explicit reviewed equivalence migration.",
+    "dataset_card": "README.md",
+    "dataset_visibility": "private",
+    "default_fast_b_calibration": null,
+    "default_fast_b_seconds": 18000,
+    "historical_access_status": 404,
+    "historical_metadata_urls_checked": 35,
+    "historical_revision_apis_checked": 5,
+    "hub_history_commits": 1,
+    "judge_reference_and_task_preflight": "passed",
+    "judge_reference_files": 71,
+    "native_epochs_validated": 4,
+    "published_data_manifests": 0,
+    "runtime_identity": "changes after provenance removal",
+    "runtime_manifest_copies_generated_locally": 2,
+    "training_materialization": "passed",
+    "training_tokenizer_bytes": "unchanged",
+    "training_tokenizer_files": 20
+  },
+  "evaluation_diagnostics": {
+    "b_ten_benchmarks": {
+      "benchmarks": 10,
+      "eight_token_native_parity": true,
+      "examples_per_benchmark": 1,
+      "reward": 0,
+      "wall_seconds": 374.1
+    },
+    "humaneval_canonical": {
+      "base_passed": 163,
+      "execution": "native early failure; not every case must execute",
+      "pinned_semantics": "EvalPlus 0.3.1 find_zero bookkeeping quirk preserved",
+      "plus_passed": 163,
+      "programs": 164,
+      "staged_cases": 124253,
+      "wall_seconds": 135.1
+    },
+    "l_cache": {
+      "context": 3072,
+      "gpu_occupancy_mib": 49767,
+      "replacement_and_forward_passed": true,
+      "slots": 33
+    },
+    "xl_random_untrained_cache": {
+      "context": 3072,
+      "decode_slots": 33,
+      "gpu_occupancy_mib": 79941,
+      "prefill_tokens": 3000,
+      "replacement_and_exact_repeat_passed": true,
+      "slots": 33
+    }
+  },
+  "not_validated": [
+    "Complete baseline training epoch or quality score",
+    "Full ten-benchmark runtime",
+    "Automated research trajectory",
+    "Two-node XL training",
+    "IB transport performance",
+    "Complete data/runtime Docker image build",
+    "Unprivileged Apptainer execution"
+  ],
+  "previous_validation": {
+    "cpu_tests": 141,
+    "scope": "Pre-cleanup implementation; current release-layout compatibility requires revalidation.",
+    "skipped": 0,
+    "static_checks": 20,
+    "suites": {
+      "data_staging": 22,
+      "evaluator_profiles": 66,
+      "timeout_policy": 7,
+      "training_accounting": 46
+    },
+    "track_compiler_profiles": 5
+  },
+  "schema_version": 1,
+  "training_diagnostics": [
+    {
+      "compute_seconds": 7.39,
+      "ema_export_passed": true,
+      "epoch_ceiling": 1,
+      "exact_reload_tensors": 251,
+      "excluded_compilation_seconds": 86.851,
+      "global_batch_tokens": 188416,
+      "gpu_type": "NVIDIA H100 80GB",
+      "gpus": 8,
+      "peak_allocated_gib": 39.38,
+      "projected_baseline_hours": 4.956,
+      "track": "fast-b",
+      "updates": 30,
+      "wall_seconds": 106.051
+    },
+    {
+      "compute_seconds": 38.377,
+      "ema_export_passed": true,
+      "epoch_ceiling": 2,
+      "exact_reload_tensors": 491,
+      "excluded_compilation_seconds": 99.978,
+      "global_batch_tokens": 147456,
+      "gpu_type": "NVIDIA H100 80GB",
+      "gpus": 8,
+      "peak_allocated_gib": 74.49,
+      "projected_baseline_hours": 30.789,
+      "projection_limit": "Observed timing instability; does not replace the 25-hour default.",
+      "track": "standard-l",
+      "updates": 80,
+      "wall_seconds": 158.2
+    }
+  ]
+}

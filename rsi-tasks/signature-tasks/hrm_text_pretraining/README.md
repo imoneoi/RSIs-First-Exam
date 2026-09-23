@@ -60,20 +60,24 @@ and guarantees that all tracks consume the same epoch prefixes. The dev
 sampler already keeps only used rows and writes compact uint16 tokens; a second
 compaction pass is unnecessary.
 
-The release starts private in
-[`sapientinc/hrm-text-rsi-sampled-20260923`](https://huggingface.co/datasets/sapientinc/hrm-text-rsi-sampled-20260923).
-Its exact revision, manifest and file hashes are frozen in
-[the release lock](environment/setup/sampled_release.json). It was prepared
-from the contributor's updated local tokenized corpus with the pinned dev
-sampler. This is a distinct approved data release; it does not claim identity
-with the older public cleaned-HF recipe.
+The [sampled release](https://huggingface.co/datasets/sapientinc/hrm-text-rsi-sampled-20260923)
+contains **20 training/tokenizer files and a dataset card**: the token store,
+loader metadata, sixteen epoch index arrays, and two tokenizer files. It has
+no data manifests or preparation provenance.
+
+[The task release lock](environment/setup/sampled_release.json), stored outside
+the dataset repository, pins the final Hub revision and embeds a minimal
+`training_manifest`: allowed file sizes and SHA-256 hashes, tokenizer/loader
+semantics, and exact epoch counts. After authentication, the downloader writes
+two identical, sanitized runtime manifests locally. They contain no source
+inventory, local paths, machine identity or preparation provenance.
 
 From this task directory on an operator staging host:
 
 ```bash
 python -m pip install -r environment/setup/requirements-data.txt
 
-# Authenticate to HF on the staging host for the private sapientinc dataset.
+# Authenticate to HF on the staging host if access is required.
 python environment/setup/download_sampled.py --output environment/staged
 
 git clone --branch dev https://github.com/sapientinc/HRM-Text.git /mnt/hrm-text-dev
@@ -88,7 +92,7 @@ Authentication stays on the staging host. The task image contains no HF token,
 benchmark labels or mixed training/evaluation cache. Training assets are baked
 into Work; sealed reference data is injected into Judge. Trials run offline.
 See [the setup guide](environment/setup/README.md) for cache verification,
-offline reuse and optional reproduction from the original tokenized inputs.
+offline reuse and the local manifest contract.
 
 Four-epoch sampling preserves the first epoch's token sequences across track
 choices, although compact file offsets and whole-file hashes can differ from a
@@ -128,7 +132,11 @@ python configure.py --track fast-b --calibration /path/to/hardware-calibration.j
 Calibration projects the complete baseline schedule from measured phase costs,
 rather than treating compile-heavy startup time as training. The sealed cap is
 rounded down from that estimate. It binds the track, topology, dev source,
-hardware and data-manifest identity. Repeat calibration for each track and
+hardware and data-manifest identity. Removing provenance changes the runtime
+manifest identity even though training/tokenizer bytes are unchanged. Old
+calibration records must not be silently retargeted to the new identity; perform
+a new calibration or an explicit reviewed migration that establishes identical
+training files and scheduling semantics. Repeat calibration for each track and
 deployment hardware. A projection is an estimate, not a measured full training
 duration. Without calibration, the reported H100 times are used; changed GPU
 counts use an explicitly idealized linear estimate and should be calibrated
@@ -254,4 +262,5 @@ program workers. Source/trajectory and operator timing review remain necessary
 to establish training provenance and resource compliance.
 
 See [VALIDATION.md](VALIDATION.md) for measured current-revision checks,
-calibration estimates, historical evidence and untested boundaries.
+calibration estimates and untested boundaries. Public validation summaries omit
+raw run records and machine-specific provenance.
