@@ -6,5 +6,7 @@
   "allenai/ai2_arc": "210d026faf9955653af8916fad021475a3f00453",
   "Rowan/hellaswag": "218ec52e09a7e7462a5400043bb9a69a41d06b76",
   "allenai/winogrande": "01e74176c63542e6b0bcb004dcdea22d94fb67b5",
-  "google/boolq": "35b264d03638db9f4ce671b711558bf7ff0f80d5"
+  "google/boolq": "35b264d03638db9f4ce671b711558bf7ff0f80d5",
+  "TIGER-Lab/MMLU-Pro": "b189ec765aa7ed75c8acfea42df31fdae71f97be",
+  "evalplus/humanevalplus": "d32357cf319e50e9c8d8dab5ea876c72b0fd321b"
 }

@@ -1,0 +1,130 @@
+{
+  "diagnostic": true,
+  "reward": 0,
+  "examples_per_benchmark": 1,
+  "profile": {
+    "agent_timeout_seconds": 32400,
+    "attempt_wall_seconds": 28800,
+    "baseline_estimate_seconds": 18000.0,
+    "baseline_global_batch": 188416,
+    "baseline_lr": 0.00018,
+    "budget_note": "Per-experiment active training time, including resumed/discarded work in its lineage. Compilation, data loading, checkpoint/export and final verification are excluded; wall watchdogs are separate. A time-limited checkpoint may score before one full epoch.",
+    "calibration": null,
+    "checkpoint_grace_seconds": 3600,
+    "clock": "synchronized_training_minus_compile",
+    "compilation_grace_seconds": 7200,
+    "compute_budget_seconds": 18000,
+    "ema": 0.9995,
+    "epochs": 1,
+    "expected_evaluation_seconds": 3600,
+    "gpus": 8,
+    "gpus_per_node": 8,
+    "hardware_estimate_note": "Contributor-reported 8-H100-per-node baseline; changed GPU count uses an ideal linear estimate. Calibrate on the deployment hardware/data before treating estimates as measured runtimes.",
+    "id": "fast-b-1n8gpu-1ep",
+    "max_source_bytes": 16000000,
+    "max_weights_bytes": 16000000000,
+    "minimum_training_epochs": 0,
+    "nodes": 1,
+    "reference_compute_seconds": 18000,
+    "reference_gpus": 8,
+    "reference_nodes": 1,
+    "schema_version": 2,
+    "size": "B",
+    "stop_policy": "epochs_or_compute_budget",
+    "tier": "Fast",
+    "track": "fast-b",
+    "verifier_allocated_gpus": 1,
+    "verifier_gpus": 1,
+    "verifier_timeout_seconds": 7200
+  },
+  "checkpoint_steps": 30,
+  "data_canonical": false,
+  "results": {
+    "GSM8k": {
+      "n": 1,
+      "acc": 0.0,
+      "invalid": 1.0
+    },
+    "MATH": {
+      "n": 1,
+      "acc": 0.0,
+      "invalid": 1.0
+    },
+    "MMLUPro": {
+      "n_business": 1,
+      "acc_business": 0.0,
+      "invalid_business": 0.0,
+      "n": 1,
+      "acc": 0.0,
+      "invalid": 0.0
+    },
+    "HumanEval": {
+      "n": 1,
+      "pass@1_base": 0.0,
+      "pass@1_plus": 0.0,
+      "execution_wall_seconds": 99.51390144973993,
+      "task_statuses": {
+        "HumanEval/0": {
+          "base_status": "fail",
+          "plus_status": "fail"
+        }
+      }
+    },
+    "DROP": {
+      "n": 1,
+      "em": 0.0,
+      "f1": 0.0
+    },
+    "MMLU": {
+      "n_abstract_algebra": 1,
+      "acc_abstract_algebra": 0.25,
+      "invalid_abstract_algebra": 1.0,
+      "n": 1,
+      "acc": 0.25,
+      "invalid": 1.0
+    },
+    "ARC": {
+      "n": 1,
+      "acc": 0.25,
+      "invalid": 1.0
+    },
+    "HellaSwag": {
+      "n": 1,
+      "acc": 0.25,
+      "invalid": 1.0
+    },
+    "Winogrande": {
+      "n": 1,
+      "acc": 0.5,
+      "invalid": 1.0
+    },
+    "BoolQ": {
+      "n": 1,
+      "acc": 0.5,
+      "invalid": 1.0
+    }
+  },
+  "diagnostic_metric_mean": 0.175,
+  "worker_setup_seconds": 86.18749653548002,
+  "total_wall_seconds": 374.07873556017876,
+  "generation_timings": {
+    "GSM8k,MATH,MMLUPro,HumanEval": {
+      "seconds": 90.53981027007103,
+      "prompts": 4,
+      "tokens_generated": 11889,
+      "forward_calls": 3047
+    },
+    "DROP": {
+      "seconds": 60.74391930550337,
+      "prompts": 1,
+      "tokens_generated": 1960,
+      "forward_calls": 1960
+    },
+    "MMLU,ARC,HellaSwag,Winogrande,BoolQ": {
+      "seconds": 0.17111051827669144,
+      "prompts": 5,
+      "tokens_generated": 5,
+      "forward_calls": 5
+    }
+  }
+}

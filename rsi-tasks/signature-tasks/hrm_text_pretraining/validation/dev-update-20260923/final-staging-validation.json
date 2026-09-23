@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "task": "/sg-pretrain/one/hrm-text-rsi-update-20260923/task-validation",
+  "release": {
+    "schema_version": 1,
+    "repo_id": "sapientinc/hrm-text-rsi-sampled-20260923",
+    "revision": "4e54b5622ebb2e6ca722412ce97789e79fd540b4",
+    "manifest_sha256": "d9e9ed1f7889541e35c70923940a7e8682976b26bfbef2c16e9dc743820f7635",
+    "release": "20260923",
+    "format": "hrm-text-prefixlm-v1",
+    "available_epoch_ids": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "data_manifest_sha256": "d9e9ed1f7889541e35c70923940a7e8682976b26bfbef2c16e9dc743820f7635",
+  "compute_budget_seconds": 17839,
+  "calibration_estimated_seconds": 17839.901812925935,
+  "regular_staged_files": true,
+  "benchmark_counts": {
+    "GSM8k": 1319,
+    "MATH": 5000,
+    "MMLUPro": 12032,
+    "HumanEval": 164,
+    "DROP": 9536,
+    "MMLU": 14042,
+    "ARC": 1172,
+    "HellaSwag": 10042,
+    "Winogrande": 1267,
+    "BoolQ": 3270
+  },
+  "reference_file_count": 71,
+  "token_store_hardlinked": true,
+  "scope": "Full local release SHA256 and array validation, atomic Work materialization, independent reference verification and calibrated task preflight. No remote whole-token redownload or Docker execution.",
+  "wall_seconds": 95.61827360093594,
+  "final_evaluator_refresh": {
+    "passed": true,
+    "seconds": 10.682532951235771,
+    "source_sha256": {
+      "tests/evaluate.py": "f63646b04d229a820e5b038e4b9719641cbb1c071f07df4f2f2220e81ce7ce5d",
+      "tests/test_architecture.py": "36c3bf54875f2b88e2878173aca32773021d408b39e1fb245c2654c7e39a0453"
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 HRM-Text is the starting model for architecture research. You may change model
 structure, tensor names/shapes, recurrence, parameter sharing and supporting
-training code. The selected profile limits resources and data; its L/XL name
+training code. The selected profile limits resources and data; its B/L/XL name
 does not require the candidate to retain the baseline architecture.
 
 The task launcher exports four artifacts into the submission directory:
@@ -20,8 +20,9 @@ The manifest format is:
   "arch": {
     "name": "baselines.hrm_nocarry_bp_warmup@HierarchicalReasoningModel",
     "head": "lm_head@LMHead",
-    "hidden_size": 1280
+    "hidden_size": 1024
   },
+  "data_config": {"seq_len": 4096},
   "forward_dtype": "bfloat16",
   "source_files": {
     "models/lm_head.py": "<sha256>"
@@ -39,7 +40,9 @@ training provenance: preserve the source patch and full training trajectory.
 `arch.name` and `arch.head` use the native `module@Class` convention. Modules
 are imported below the exported `models` package. The core constructor accepts
 a configuration dictionary; the head constructor accepts `(core, config)`.
-The verifier supplies trusted vocabulary, context and tokenizer metadata from
+The launcher also exports the resolved `data` configuration as `data_config`,
+which the dev model constructor needs alongside architecture settings. The
+verifier supplies trusted vocabulary, context and tokenizer metadata from
 its sealed data reference. Candidate architecture declarations cannot redefine
 those data semantics. Submitted weights must strict-load the submitted model,
 not an unrelated canonical L model.
@@ -120,8 +123,8 @@ restricted system calls. It receives only the necessary runtime, submitted model
 and public data metadata. The verifier fails closed if it cannot establish
 isolation. The current worker executes model forwards eagerly and transfers
 logits to the parent; inference timing therefore describes this evaluator, not
-the upstream compiled engine. The fixed final limit is one H100 and 24 hours,
-including setup. Record inference time and generated-token counts with quality.
+the upstream compiled engine. The final wall watchdog and allocated GPUs are sealed in the selected profile;
+evaluation time is reported separately from training computation. Record inference time and generated-token counts with quality.
 
 Changing the model to recognize benchmark identities, substitute stored answers,
 read unrelated files, access the parent process or alter the protocol violates

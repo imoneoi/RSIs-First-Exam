@@ -1,0 +1,132 @@
+{
+  "source_commit": "c2865cf8df3caf53b6ec44a223fdccc4d276a20e",
+  "cuda_initialized": false,
+  "scope": "Native Hydra composition, Pydantic validation and meta model construction only. No training, allocation or model-performance claim.",
+  "recipes": {
+    "B": {
+      "overrides": [
+        "arch/size@arch=B",
+        "epochs=1",
+        "lr=1.8e-4",
+        "ema=0.9995"
+      ],
+      "total_parameters": 300941312,
+      "lr": 0.00018,
+      "ema": 0.9995,
+      "epochs": 1,
+      "global_batch_size": 188416,
+      "architecture": {
+        "name": "baselines.hrm_nocarry_bp_warmup@HierarchicalReasoningModel",
+        "head": "lm_head@LMHead",
+        "half_layers": true,
+        "H_cycles": 2,
+        "L_cycles": 3,
+        "H_override": {},
+        "bp_warmup_ratio": 0.5,
+        "bp_min_steps": 2,
+        "bp_max_steps": 6,
+        "n_layers": 12,
+        "hidden_size": 1024,
+        "num_heads": 8,
+        "expansion": 4,
+        "norm_type": "pre",
+        "norm_eps": 1e-06,
+        "rope_theta": 10000.0,
+        "pos_emb_type": "rope",
+        "init_type": "lecun_normal"
+      }
+    },
+    "Transformer_B": {
+      "overrides": [
+        "arch/net@arch=transformer",
+        "arch/size@arch=B",
+        "epochs=1",
+        "arch.n_layers=34",
+        "lr=1.8e-4",
+        "ema=0.9995"
+      ],
+      "total_parameters": 606601216,
+      "lr": 0.00018,
+      "ema": 0.9995,
+      "epochs": 1,
+      "global_batch_size": 188416,
+      "architecture": {
+        "name": "baselines.transformer_wrapper@TransformerWrapper",
+        "head": "lm_head@LMHead",
+        "n_layers": 34,
+        "hidden_size": 1024,
+        "num_heads": 8,
+        "expansion": 4,
+        "norm_type": "pre",
+        "norm_eps": 1e-06,
+        "rope_theta": 10000.0,
+        "pos_emb_type": "rope",
+        "init_type": "lecun_normal"
+      }
+    },
+    "L": {
+      "overrides": [
+        "arch/size@arch=L",
+        "epochs=2",
+        "global_batch_size=147456",
+        "ema=0.9995"
+      ],
+      "total_parameters": 694681600,
+      "lr": 0.00022,
+      "ema": 0.9995,
+      "epochs": 2,
+      "global_batch_size": 147456,
+      "architecture": {
+        "name": "baselines.hrm_nocarry_bp_warmup@HierarchicalReasoningModel",
+        "head": "lm_head@LMHead",
+        "half_layers": true,
+        "H_cycles": 2,
+        "L_cycles": 3,
+        "H_override": {},
+        "bp_warmup_ratio": 0.5,
+        "bp_min_steps": 2,
+        "bp_max_steps": 6,
+        "n_layers": 24,
+        "hidden_size": 1280,
+        "num_heads": 10,
+        "expansion": 4,
+        "norm_type": "pre",
+        "norm_eps": 1e-06,
+        "rope_theta": 10000.0,
+        "pos_emb_type": "rope",
+        "init_type": "lecun_normal"
+      }
+    },
+    "XL": {
+      "overrides": [
+        "epochs=2",
+        "ema=0.9995"
+      ],
+      "total_parameters": 1182793728,
+      "lr": 0.00022,
+      "ema": 0.9995,
+      "epochs": 2,
+      "global_batch_size": 188416,
+      "architecture": {
+        "name": "baselines.hrm_nocarry_bp_warmup@HierarchicalReasoningModel",
+        "head": "lm_head@LMHead",
+        "half_layers": true,
+        "H_cycles": 2,
+        "L_cycles": 3,
+        "H_override": {},
+        "bp_warmup_ratio": 0.5,
+        "bp_min_steps": 2,
+        "bp_max_steps": 6,
+        "n_layers": 32,
+        "hidden_size": 1536,
+        "num_heads": 12,
+        "expansion": 4,
+        "norm_type": "pre",
+        "norm_eps": 1e-06,
+        "rope_theta": 10000.0,
+        "pos_emb_type": "rope",
+        "init_type": "lecun_normal"
+      }
+    }
+  }
+}

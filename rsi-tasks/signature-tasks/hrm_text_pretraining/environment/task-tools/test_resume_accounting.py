@@ -57,6 +57,14 @@ class ResumeAccountingTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "parent process.*alive"):
             RUNNER.resume_accounting(self.saved, parent, now=7200)
 
+    def test_remote_parent_requires_terminal_receipt_without_matching_local_pids(self):
+        parent = self.parent | {"rank0_hostname": "another-node"}
+        with self.assertRaisesRegex(RuntimeError, "Remote parent requires"):
+            self.stopped_receipt(parent)
+        parent |= {"status": "completed", "end_unix": 18000, "gpu_hours": 44.0}
+        with patch.object(RUNNER, "process_start_ticks", return_value="dead-parent"):
+            self.assertEqual(RUNNER.resume_accounting(self.saved, parent)["gpu_hours"], 44)
+
     def test_interrupted_parent_without_process_identity_is_rejected(self):
         parent = {key: value for key, value in self.parent.items() if not key.startswith("rank0_")}
         with self.assertRaisesRegex(RuntimeError, "no recorded process identity"):

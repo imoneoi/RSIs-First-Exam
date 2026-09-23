@@ -1,0 +1,73 @@
+{
+  "source": "contributor-reported on 2026-09-23",
+  "status": "not_locally_reproduced_under_current_task_contract",
+  "size": "B",
+  "units": "percent",
+  "normalizes_reward": false,
+  "benchmarks": [
+    {
+      "benchmark": "GSM8K",
+      "metric": "acc",
+      "HRMText": 41.85,
+      "Transformer": 37.38
+    },
+    {
+      "benchmark": "MATH",
+      "metric": "acc",
+      "HRMText": 22.64,
+      "Transformer": 22.46
+    },
+    {
+      "benchmark": "MMLU-Pro",
+      "metric": "acc",
+      "HRMText": 18.39,
+      "Transformer": 17.59
+    },
+    {
+      "benchmark": "HumanEval+",
+      "metric": "pass@1_plus",
+      "HRMText": 18.9,
+      "Transformer": 15.24
+    },
+    {
+      "benchmark": "DROP",
+      "metric": "f1",
+      "HRMText": 41.67,
+      "Transformer": 31.7
+    },
+    {
+      "benchmark": "MMLU",
+      "metric": "acc",
+      "HRMText": 39.05,
+      "Transformer": 38.48
+    },
+    {
+      "benchmark": "ARC-Challenge",
+      "metric": "acc",
+      "HRMText": 43.0,
+      "Transformer": 37.03
+    },
+    {
+      "benchmark": "HellaSwag",
+      "metric": "acc",
+      "HRMText": 31.4,
+      "Transformer": 30.37
+    },
+    {
+      "benchmark": "WinoGrande",
+      "metric": "acc",
+      "HRMText": 53.51,
+      "Transformer": 51.93
+    },
+    {
+      "benchmark": "BoolQ",
+      "metric": "acc",
+      "HRMText": 70.15,
+      "Transformer": 63.39
+    }
+  ],
+  "equal_weight_mean": {
+    "HRMText": 38.056,
+    "Transformer": 34.557
+  }
+}

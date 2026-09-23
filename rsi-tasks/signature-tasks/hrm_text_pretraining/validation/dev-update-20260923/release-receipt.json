@@ -1,0 +1,65 @@
+{
+  "repo_id": "sapientinc/hrm-text-rsi-sampled-20260923",
+  "revision": "4e54b5622ebb2e6ca722412ce97789e79fd540b4",
+  "private": true,
+  "manifest_sha256": "d9e9ed1f7889541e35c70923940a7e8682976b26bfbef2c16e9dc743820f7635",
+  "remote_file_verification": {
+    "README.md": "downloaded_sha256",
+    "analytics.md": "downloaded_sha256",
+    "data_manifest.json": "downloaded_sha256",
+    "prefix_config.yaml": "downloaded_sha256",
+    "provenance/release_recipe.json": "downloaded_sha256",
+    "provenance/sample_tokenized.py": "downloaded_sha256",
+    "sampled/data_manifest.json": "downloaded_sha256",
+    "sampled/epoch_0/inst_len.npy": "remote_lfs_sha256",
+    "sampled/epoch_0/inst_start.npy": "remote_lfs_sha256",
+    "sampled/epoch_0/resp_len.npy": "remote_lfs_sha256",
+    "sampled/epoch_0/resp_start.npy": "remote_lfs_sha256",
+    "sampled/epoch_1/inst_len.npy": "remote_lfs_sha256",
+    "sampled/epoch_1/inst_start.npy": "remote_lfs_sha256",
+    "sampled/epoch_1/resp_len.npy": "remote_lfs_sha256",
+    "sampled/epoch_1/resp_start.npy": "remote_lfs_sha256",
+    "sampled/epoch_2/inst_len.npy": "remote_lfs_sha256",
+    "sampled/epoch_2/inst_start.npy": "remote_lfs_sha256",
+    "sampled/epoch_2/resp_len.npy": "remote_lfs_sha256",
+    "sampled/epoch_2/resp_start.npy": "remote_lfs_sha256",
+    "sampled/epoch_3/inst_len.npy": "remote_lfs_sha256",
+    "sampled/epoch_3/inst_start.npy": "remote_lfs_sha256",
+    "sampled/epoch_3/resp_len.npy": "remote_lfs_sha256",
+    "sampled/epoch_3/resp_start.npy": "remote_lfs_sha256",
+    "sampled/metadata.json": "downloaded_sha256",
+    "sampled/tokens.npy": "remote_lfs_sha256",
+    "source_inventory.json": "downloaded_sha256",
+    "tokenizer/config.json": "downloaded_sha256",
+    "tokenizer/tokenizer.json": "downloaded_sha256"
+  },
+  "complete": true,
+  "finished_utc": "2026-09-23T06:01:15.076670+00:00",
+  "schema_version": 1,
+  "remote_token": {
+    "path": "sampled/tokens.npy",
+    "bytes": 85190885084,
+    "sha256": "3a6275b5c24126ba26a647103dcf601c078cb5cca027cf52daaea8f9356fe106",
+    "verification": "remote_lfs_sha256"
+  },
+  "verification_scope": {
+    "released_payload_files": 28,
+    "remote_lfs_sha256_files": 17,
+    "downloaded_full_sha256_files": 11,
+    "git_metadata_files_ignored": [
+      ".gitattributes"
+    ],
+    "all_sampled_files_full_sha256": true,
+    "all_four_epoch_bounds_validated": true
+  },
+  "sampled_payload_bytes": 92727225058,
+  "native_sampling_exit_code": 0,
+  "early_snapshot_rejected_before_commit": true,
+  "mismatch_diagnosis_receipt": "early_copy_full_comparison.json",
+  "final_identity_rechecked_utc": "2026-09-23T06:02:12.975714+00:00",
+  "cleanup": {
+    "removed_only_temporary_upload_ram_copy": "/dev/shm/hrm_text_rsi_release_upload_20260923/tokens.npy",
+    "native_release_preserved": "/sg-pretrain/one/hrm-text-rsi-update-20260923/release",
+    "original_shm_sampled_preserved": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "repo_id": "sapientinc/hrm-text-rsi-sampled-20260923",
+  "revision": "4e54b5622ebb2e6ca722412ce97789e79fd540b4",
+  "manifest_sha256": "d9e9ed1f7889541e35c70923940a7e8682976b26bfbef2c16e9dc743820f7635",
+  "release": "20260923",
+  "format": "hrm-text-prefixlm-v1",
+  "available_epoch_ids": [
+    0,
+    1,
+    2,
+    3
+  ]
+}

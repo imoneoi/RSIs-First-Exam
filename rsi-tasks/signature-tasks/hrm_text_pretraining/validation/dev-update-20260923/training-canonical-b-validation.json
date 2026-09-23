@@ -1,0 +1,121 @@
+{
+  "audit": {
+    "checkpoint_roundtrip": {
+      "exact_equal_all_ranks": true,
+      "local_tensor_count": 251,
+      "method": "Snapshot tensors to CPU, zero model/optimizer tensors, DCP reload, torch.equal every local tensor"
+    },
+    "checkpoint_seconds": 1.1438197493553162,
+    "compilation_seconds": 86.85075226426125,
+    "completed_epochs": 0,
+    "compute_seconds": 7.390321485698223,
+    "data_manifest_sha256": "d9e9ed1f7889541e35c70923940a7e8682976b26bfbef2c16e9dc743820f7635",
+    "model_manifest_sha256": "90ab3bf1cf4ddbed8113f580199b4d6ff1187841f1440d88759f556bd52aaf08",
+    "num_params": 300941312,
+    "peak_gpu_memory_allocated_bytes": 42279295488,
+    "peak_gpu_memory_allocated_bytes_rank0": 42279295488,
+    "peak_gpu_memory_by_rank": [
+      {
+        "allocated_bytes": 42279295488,
+        "rank": 0,
+        "reserved_bytes": 43346034688
+      },
+      {
+        "allocated_bytes": 42279295488,
+        "rank": 1,
+        "reserved_bytes": 43346034688
+      },
+      {
+        "allocated_bytes": 42279295488,
+        "rank": 2,
+        "reserved_bytes": 43346034688
+      },
+      {
+        "allocated_bytes": 42279295488,
+        "rank": 3,
+        "reserved_bytes": 43346034688
+      },
+      {
+        "allocated_bytes": 42279295488,
+        "rank": 4,
+        "reserved_bytes": 43346034688
+      },
+      {
+        "allocated_bytes": 42279295488,
+        "rank": 5,
+        "reserved_bytes": 43346034688
+      },
+      {
+        "allocated_bytes": 42279295488,
+        "rank": 6,
+        "reserved_bytes": 43346034688
+      },
+      {
+        "allocated_bytes": 42279295488,
+        "rank": 7,
+        "reserved_bytes": 43346034688
+      }
+    ],
+    "peak_gpu_memory_reserved_bytes": 43346034688,
+    "runner_source_sha256": {
+      "calibrate.py": "eeb3560b9d583bec46238cbb38362a4c347d43c77412c3baffe68416cad44219",
+      "compute_budget.py": "2ecb2a82eb3342a97a8b6f47f51468c61ee92db0ce3a08bf0cd3186a6f88e4ff",
+      "profiles.py": "15d8a2cf59bb9161f44d5648a74dcf2e4cb88770be34bc8da8a33556f8293770",
+      "train.py": "d5cc528cd12df69b7dbb39c87346cd8d98ac8ecf3a47456087cc2bb7419825b6"
+    },
+    "smoke": true,
+    "status": "completed",
+    "steps": 30,
+    "stop_reason": "diagnostic_step_limit",
+    "wall_seconds": 106.05135440826416,
+    "weights_sha256": "f9ffd1cbdb7578a27d8110f27dd1eadf8cf8f9bf0c471753b53a02ccd029843e"
+  },
+  "calibrated_compute_budget_seconds": 17839,
+  "calibration_path": "/sg-pretrain/one/hrm-text-rsi-update-20260923/fast-b-hardware-calibration.json",
+  "calibration_sha256": "56d395ba67a8d1decea77742f05d31368ba363a50ebf172b09b1ef6a1f9d15f9",
+  "profile_binding_cpu_checks": "passed: exact regenerate, recipe, source/data, hardware/topology, foreign track/topology rejection",
+  "projection": {
+    "estimated_baseline_compute_seconds": 17839.901812925935,
+    "phase_measurements": {
+      "2": {
+        "max_compute_seconds": 0.1558620184659958,
+        "mean_compute_seconds": 0.15316618606448174,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.15046426653862,
+        "scheduled_steps": 10170
+      },
+      "3": {
+        "max_compute_seconds": 0.18032953888177872,
+        "mean_compute_seconds": 0.17852212116122246,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.17602697014808655,
+        "scheduled_steps": 10170
+      },
+      "4": {
+        "max_compute_seconds": 0.20958545058965683,
+        "mean_compute_seconds": 0.20534583739936352,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.201316200196743,
+        "scheduled_steps": 10170
+      },
+      "5": {
+        "max_compute_seconds": 0.22754544764757156,
+        "mean_compute_seconds": 0.2243726272135973,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.21949632465839386,
+        "scheduled_steps": 10170
+      },
+      "6": {
+        "max_compute_seconds": 0.2529078498482704,
+        "mean_compute_seconds": 0.24818453192710876,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.24139629304409027,
+        "scheduled_steps": 40681
+      }
+    },
+    "sample_max_projection_seconds": 18153.23361297697,
+    "uncertainty_note": "Short phase samples; projection assumes stationary execution and an estimated packed update count. Sample maxima are not a statistical confidence bound."
+  },
+  "run_dir": "/sg-pretrain/one/hrm-text-rsi-update-20260923/runs/fast-b-calibration-canonical",
+  "scope": "Canonical-data 30-update HRM B phase sweep; no complete baseline epoch or benchmark-quality reproduction"
+}

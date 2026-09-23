@@ -65,8 +65,16 @@ class SamplingEpochTests(unittest.TestCase):
 
     def test_one_epoch_is_exact_prefix_of_four_and_later_epochs_add_documents(self):
         one, four = self.sample(1), self.sample(4)
-        for name in ('tokens.npy', *(f'epoch_0/{field}.npy' for field in FIELDS)):
-            self.assertEqual(sha256(one / name), sha256(four / name))
+        def sequences(root, epoch):
+            tokens = np.load(root / 'tokens.npy')
+            arrays = {key: np.load(root / f'epoch_{epoch}/{key}.npy') for key in FIELDS}
+            return [(tuple(tokens[int(arrays['inst_start'][row]):int(arrays['inst_start'][row] + arrays['inst_len'][row])]),
+                     tuple(tokens[int(arrays['resp_start'][row]):int(arrays['resp_start'][row] + arrays['resp_len'][row])]))
+                    for row in range(len(arrays['inst_start']))]
+        # The dev sampler packs only used rows, so offsets and token-file bytes
+        # vary with the selected epoch count; the sampled sequences do not.
+        self.assertEqual(sequences(one, 0), sequences(four, 0))
+        self.assertLess((one / 'tokens.npy').stat().st_size, (four / 'tokens.npy').stat().st_size)
         for root, count in ((one, 1), (four, 4)):
             stats = validate_sampled(root)
             self.assertEqual(stats['available_epoch_ids'], list(range(count)))

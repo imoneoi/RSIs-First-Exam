@@ -69,7 +69,10 @@ def instantiate(manifest, metadata, weights, *, device='cpu'):
         module, name = entry.split('@')
         return getattr(importlib.import_module('models.' + module), name)
     # Dataset/tokenizer identity is verifier-owned and wins conflicting arch keys.
-    config = dict(manifest['arch']) | dict(metadata)
+    data_config = manifest.get('data_config', {})
+    if not isinstance(data_config, dict):
+        raise ValueError('Architecture data_config must be a JSON object')
+    config = dict(manifest['arch']) | data_config | dict(metadata)
     torch.manual_seed(0)
     with torch.device('cpu'):
         core = load(manifest['arch']['name'])(config)

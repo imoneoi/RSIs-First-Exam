@@ -1,0 +1,679 @@
+{
+  "date": "2026-09-23",
+  "scope": "all164 canonical programs against124253 staged cases; native early failure applies",
+  "hrm_commit": "c2865cf8df3caf53b6ec44a223fdccc4d276a20e",
+  "result": {
+    "n": 164,
+    "pass@1_base": 0.9939024390243902,
+    "pass@1_plus": 0.9939024390243902,
+    "execution_wall_seconds": 135.08571907132864,
+    "task_statuses": {
+      "HumanEval/0": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/1": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/2": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/3": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/4": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/5": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/6": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/7": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/8": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/9": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/10": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/11": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/12": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/13": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/14": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/15": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/16": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/17": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/18": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/19": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/20": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/21": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/22": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/23": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/24": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/25": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/26": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/27": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/28": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/29": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/30": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/31": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/32": {
+        "base_status": "fail",
+        "plus_status": "fail"
+      },
+      "HumanEval/33": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/34": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/35": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/36": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/37": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/38": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/39": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/40": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/41": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/42": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/43": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/44": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/45": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/46": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/47": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/48": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/49": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/50": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/51": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/52": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/53": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/54": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/55": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/56": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/57": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/58": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/59": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/60": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/61": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/62": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/63": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/64": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/65": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/66": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/67": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/68": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/69": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/70": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/71": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/72": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/73": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/74": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/75": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/76": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/77": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/78": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/79": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/80": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/81": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/82": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/83": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/84": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/85": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/86": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/87": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/88": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/89": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/90": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/91": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/92": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/93": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/94": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/95": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/96": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/97": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/98": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/99": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/100": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/101": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/102": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/103": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/104": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/105": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/106": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/107": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/108": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/109": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/110": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/111": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/112": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/113": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/114": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/115": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/116": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/117": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/118": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/119": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/120": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/121": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/122": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/123": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/124": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/125": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/126": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/127": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/128": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/129": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/130": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/131": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/132": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/133": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/134": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/135": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/136": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/137": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/138": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/139": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/140": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/141": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/142": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/143": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/144": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/145": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/146": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/147": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/148": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/149": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/150": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/151": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/152": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/153": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/154": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/155": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/156": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/157": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/158": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/159": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/160": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/161": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/162": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      },
+      "HumanEval/163": {
+        "base_status": "pass",
+        "plus_status": "pass"
+      }
+    }
+  },
+  "source_sha256": {
+    "humaneval.py": "8b316431fc83ccb9e60f5e914eae90677e364f7731252041917f7455476a1d4a",
+    "code_worker.py": "966fa39c7accd7562b31620da39a1eddc4fdd7ba7eb3a0bc41cb2e8a4a19eb2a",
+    "code_values.py": "313c0c6c769e4b4ae452b3fafd476de9989a6ac825b452beee2c921882a05594",
+    "sandbox.py": "a5f8636e0525b0b67b45f480f89b2ebc40bfd442f23ec0ce1c4e83ac3535c686",
+    "protocol.py": "9d25142c48a15304892017c7f138872d6db98efb132db8566be1820af80ab49e",
+    "stage_humaneval.py": "7ebcf4e3a0ff86d4eaf29642cf03e99e18f64551b60bee74bf7d2b04533bfd76",
+    "benchmark_contract.json": "8e5364c51ec84d6c8335fdc89fd5677d577e6ec711f156f4d551721576a3de40"
+  },
+  "oracle_sha256": "37af2b380bee996fb33f6ee15f29b9dbfb7bc86d186dfe9d35d5edbddee2d0ab"
+}

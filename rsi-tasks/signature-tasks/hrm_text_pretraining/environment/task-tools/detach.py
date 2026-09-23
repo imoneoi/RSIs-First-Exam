@@ -17,6 +17,8 @@ import json
 import os
 from pathlib import Path
 import signal
+import socket
+import re
 import subprocess
 import sys
 import time
@@ -45,9 +47,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("action", choices=("start", "status", "_supervise"))
     parser.add_argument("--run-dir", required=True, type=Path)
+    parser.add_argument("--node-rank", type=int, default=None, help="Native multi-node supervisor identity; start once on each node")
     args, training_arguments = parser.parse_known_args()
     run_dir = args.run_dir.resolve()
-    launch_path = run_dir / "launch.json"
+    if args.node_rank is not None and args.node_rank < 0:
+        parser.error("--node-rank must be nonnegative")
+    suffix = "" if args.node_rank in (None, 0) else f".node_{args.node_rank}"
+    launch_path = run_dir / f"launch{suffix}.json"
+    request_path = run_dir / f"launch_request{suffix}.json"
+    log_path = run_dir / f"train{suffix}.log"
 
     if args.action == "status":
         if training_arguments:
@@ -55,10 +63,11 @@ def main():
         launch = json.loads(launch_path.read_text())
         pid = launch.get("supervisor_pid")
         ticks = launch.get("supervisor_start_ticks")
-        launch["supervisor_running"] = bool(pid and ticks and process_start_ticks(pid) == ticks)
+        local_host = launch.get("hostname", socket.gethostname()) == socket.gethostname()
+        launch["supervisor_running"] = bool(pid and ticks and process_start_ticks(pid) == ticks) if local_host else None
         child_pid = launch.get("child_pid")
         child_ticks = launch.get("child_start_ticks")
-        launch["child_running"] = bool(child_pid and child_ticks and process_start_ticks(child_pid) == child_ticks)
+        launch["child_running"] = bool(child_pid and child_ticks and process_start_ticks(child_pid) == child_ticks) if local_host else None
         for filename, key in (("run.json", "training"), ("metrics.jsonl", "last_step")):
             path = run_dir / filename
             if path.is_file():
@@ -77,12 +86,13 @@ def main():
                     run = json.loads(path.read_text())
                     launch[key] = {name: run.get(name) for name in
                                    ("status", "profile", "batch", "steps", "microbatches_processed", "completed_epochs",
-                                    "gpu_hours", "smoke", "checkpoint_path", "weights_sha256")}
+                                    "gpu_hours", "compute_seconds", "compute_budget_seconds", "clock", "stop_reason", "compilation_seconds", "smoke", "checkpoint_path", "weights_sha256")}
         print(json.dumps(launch, indent=2, sort_keys=True))
         return
 
     if args.action == "start":
-        command = [str(Path(__file__).resolve().with_name("launch.sh")), "--run-dir", str(run_dir), *training_arguments]
+        node_arguments = ["--node-rank", str(args.node_rank)] if args.node_rank is not None else []
+        command = [str(Path(__file__).resolve().with_name("launch.sh")), "--run-dir", str(run_dir), *node_arguments, *training_arguments]
         # Resolve and validate CPU-only before creating artifacts or detaching.
         plan_result = subprocess.run([*command, "--dry-run"], text=True, capture_output=True)
         if plan_result.returncode:
@@ -99,15 +109,18 @@ def main():
         resolved = plan["command"]
         command = [command[0], *resolved[resolved.index(runner) + 1:]]
         if run_dir.exists() and any(run_dir.iterdir()):
-            parser.error("Refusing to overwrite a nonempty run directory")
+            sibling_receipts = re.compile(r"(?:launch(?:_request)?(?:\.node_\d+)?\.json|train(?:\.node_\d+)?\.log)\Z")
+            if (args.node_rank is None or launch_path.exists() or request_path.exists() or log_path.exists()
+                    or any(not sibling_receipts.fullmatch(path.name) for path in run_dir.iterdir())):
+                parser.error("Refusing to overwrite a nonempty run directory or this node's receipt")
         run_dir.mkdir(parents=True, exist_ok=True)
-        write_json(run_dir / "launch_request.json", {"command": command, "requested_utc": utc_now(),
+        write_json(request_path, {"command": command, "requested_utc": utc_now(),
                                                     "profile": plan["profile"], "batch": plan["batch"],
                                                     "resolved_torchrun_command": plan["command"],
-                                                    "cwd": str(run_dir), "log": str(run_dir / "train.log")})
+                                                    "cwd": str(run_dir), "log": str(log_path), "node_rank": args.node_rank})
         try:
-            with (run_dir / "train.log").open("ab", buffering=0) as log:
-                supervisor = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "_supervise", "--run-dir", str(run_dir)],
+            with log_path.open("ab", buffering=0) as log:
+                supervisor = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "_supervise", "--run-dir", str(run_dir), *node_arguments],
                                               stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
                                               start_new_session=True, close_fds=True, cwd=run_dir)
         except OSError as error:
@@ -122,8 +135,8 @@ def main():
         print(launch_path.read_text(), end="")
         return
 
-    request = json.loads((run_dir / "launch_request.json").read_text())
-    launch = {**request, "status": "starting", "supervisor_pid": os.getpid(),
+    request = json.loads(request_path.read_text())
+    launch = {**request, "status": "starting", "hostname": socket.gethostname(), "supervisor_pid": os.getpid(),
               "supervisor_start_ticks": process_start_ticks(os.getpid()), "started_utc": utc_now()}
     write_json(launch_path, launch)
     try:

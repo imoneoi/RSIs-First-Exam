@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "files": {
+    "README.md": {
+      "bytes": 1424,
+      "sha256": "8fde783402694ab8051c0634122ce0925d65ad54149a3c98a91265c1a088a611"
+    },
+    "b-evaluator-diagnostic.json": {
+      "bytes": 3374,
+      "sha256": "ba5c32a174dcbc54126e3d7ff9d5fe48582c3dc75a7529545179d11d0186f2f1"
+    },
+    "baseline-native-configs.json": {
+      "bytes": 3538,
+      "sha256": "4c76e601221c28b27a74ba5dc56e87db64678cf2f6d9adf65c55aefefba3b1a0"
+    },
+    "canonical-humaneval-receipt.json": {
+      "bytes": 16589,
+      "sha256": "c4036ff77ed5c3feca08376274de48d70529367d41bd4cd6f8658dc3666ef097"
+    },
+    "canonical-humaneval.json": {
+      "bytes": 14320,
+      "sha256": "734a32bcf8ac2b61d28181a54e1bae7ee29d019ccb45c85a9ac100c058c44bc9"
+    },
+    "cpu-checks.json": {
+      "bytes": 39450,
+      "sha256": "cce02aee616bab8f0bb9e3186ed2dfd6e2db670c5af093246e9c90bbf33e8cd1"
+    },
+    "evaluator-final-checks.json": {
+      "bytes": 12288,
+      "sha256": "149588084198bbd6a50fdedcc369128a977b22b5e66e2ae06c14a493173d4795"
+    },
+    "evaluator-validation-receipt.json": {
+      "bytes": 5230,
+      "sha256": "b12820efdd0eff2982564b5e7fd7ee21771026c66e7b6e662b72401b135fb268"
+    },
+    "fast-b-canonical-launch.json": {
+      "bytes": 3935,
+      "sha256": "004f963c8fe575d1b74fd910cd8b71830eaa9e9f340ee6a9ab41d52010d3f244"
+    },
+    "fast-b-canonical-metrics.jsonl": {
+      "bytes": 20841,
+      "sha256": "afc39be410fe0d64e333608c13e44598c9723ccba0ceb77adeeb7dd77029985c"
+    },
+    "fast-b-canonical-run.json": {
+      "bytes": 16779,
+      "sha256": "abe7932eaf0b02067e08bc72945e38502bbbf9c838387bfc3af6e402b76fa1d0"
+    },
+    "fast-b-hardware-calibration.json": {
+      "bytes": 6234,
+      "sha256": "56d395ba67a8d1decea77742f05d31368ba363a50ebf172b09b1ef6a1f9d15f9"
+    },
+    "final-staging-validation.json": {
+      "bytes": 1562,
+      "sha256": "4b573997dec198891c0883c74a87a5639fb63839d8e042e5499714eeed495e56"
+    },
+    "final-static-checks.json": {
+      "bytes": 14844,
+      "sha256": "b8bf17f62746825c06a11ca1124bd4525583ac3fba67cb12f6ea43460225e138"
+    },
+    "inference-cache-meta.json": {
+      "bytes": 1009,
+      "sha256": "dcf5f06d1b9d40168186b541b06c3d27ae65d06440415d59f248b9a245e5b5bc"
+    },
+    "l-evaluator-cache.json": {
+      "bytes": 5076,
+      "sha256": "56649f84a668c438ae57793440ccbe2a0715b445bb71628782f51467363fc3bc"
+    },
+    "native-generation-parity.json": {
+      "bytes": 423,
+      "sha256": "f48d050cb3ecb6f3649cbb0e4a6310217454f73c27f0816f425e564c04936ecc"
+    },
+    "official-reference-receipt.json": {
+      "bytes": 2760,
+      "sha256": "d511bfc77a56e239a5aea735828540bf970cfd52cc4b36e537398ac18ee22755"
+    },
+    "profile-compiler.json": {
+      "bytes": 17537,
+      "sha256": "928f41070cc16db2780f3cce95bbc085add6ee9dcd3082b88840e9b6b189c3d5"
+    },
+    "release-receipt.json": {
+      "bytes": 2901,
+      "sha256": "24ba353f19234b8797836f28f7f41ff28d8f806fb1d6eb053b4a4ef0aa221744"
+    },
+    "sampled-data-manifest.json": {
+      "bytes": 8355,
+      "sha256": "d9e9ed1f7889541e35c70923940a7e8682976b26bfbef2c16e9dc743820f7635"
+    },
+    "standard-l-canonical-launch.json": {
+      "bytes": 4002,
+      "sha256": "072f9473b750d86fa3690879aa618d7c248f8bd68eac418e8ea706253b1f12e0"
+    },
+    "standard-l-canonical-metrics.jsonl": {
+      "bytes": 55439,
+      "sha256": "405822929ad434ed6936eca8ba1bdb87559a18131e8c879358241cb738747b06"
+    },
+    "standard-l-canonical-run.json": {
+      "bytes": 19675,
+      "sha256": "58ed02c25ff4b0038a41a30f048dd7248b2304fb806093a5922002b875b75f50"
+    },
+    "standard-l-hardware-calibration-short.json": {
+      "bytes": 6268,
+      "sha256": "1b08c81ed96e3321ac713bbea343f9976d004141af9c2c6ff51d52dc445c90c2"
+    },
+    "standard-l-hardware-calibration.json": {
+      "bytes": 6279,
+      "sha256": "d70cd636688db1562581c6d3524f1b331aeb913866f27813cba67f7818f76b47"
+    },
+    "training-canonical-b-validation.json": {
+      "bytes": 4513,
+      "sha256": "59bca916575864c96ff11580e76977ad8452d5997f0604c067579e3de8ff26f9"
+    },
+    "training-canonical-l-short-validation.json": {
+      "bytes": 5560,
+      "sha256": "96c588dceb58a40c423707211003581c24dbab93cfd40b185dcaac5ab6bcd5fd"
+    },
+    "training-canonical-l-validation.json": {
+      "bytes": 7457,
+      "sha256": "f0cc425db19715c8eb87b5c8616ca419a5d6bb54bd77319c9cb3a9f5560a4839"
+    },
+    "training-diagnostics.json": {
+      "bytes": 15653,
+      "sha256": "0605a64b7642de7841b8e55e632956189238181e61b3d3843928ade0e3635162"
+    },
+    "xl-random-evaluator-cache.json": {
+      "bytes": 5812,
+      "sha256": "284cb9f3e1bc513688caca7656e137cd274d522c2c1233dcaa5cf4b11f608d0f"
+    },
+    "xl-random-fixture.json": {
+      "bytes": 648,
+      "sha256": "8b6084e5d68285ef71ce9996c97886ddccecb48a89aefed0522b2926581ca48c"
+    }
+  }
+}

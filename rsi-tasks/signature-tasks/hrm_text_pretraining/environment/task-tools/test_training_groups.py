@@ -52,11 +52,11 @@ class TrainingGroupTests(unittest.TestCase):
         return RUNNER.run_accumulated_update(group, counts, backward, update)
 
     def test_reference_batch_defaults_and_explicit_research_batch(self):
-        self.assertEqual(RUNNER.resolve_batch("L", 8), {"global_batch_size": 172032,
-                         "microbatch_tokens": 21504, "gradient_accumulation_steps": 1,
-                         "global_microbatch_tokens": 172032})
-        self.assertEqual(RUNNER.resolve_batch("XL", 2)["gradient_accumulation_steps"], 16)
-        self.assertEqual(RUNNER.resolve_batch("XL", 2, 12288)["gradient_accumulation_steps"], 8)
+        self.assertEqual(RUNNER.resolve_batch("L", 8), {"global_batch_size": 147456,
+                         "microbatch_tokens": 18432, "gradient_accumulation_steps": 1,
+                         "global_microbatch_tokens": 147456})
+        self.assertEqual(RUNNER.resolve_batch("XL", 2)["gradient_accumulation_steps"], 8)
+        self.assertEqual(RUNNER.resolve_batch("XL", 2, 5888)["gradient_accumulation_steps"], 16)
         self.assertEqual(RUNNER.resolve_batch("XL", 2, 4096, 4, 32768)["global_batch_size"], 32768)
         with self.assertRaises(ValueError):
             RUNNER.resolve_batch("XL", 2, 6144, 8)

@@ -1,6 +1,6 @@
 {
   "data_io_repository": "https://github.com/sapientinc/data_io.git",
-  "data_io_revision": "c82cd5f66459c5e66709e8430eccf8daecd0ca7d",
+  "data_io_revision": "3728ebea6b6a7ff554af4e51350e6fd9e4b83fa6",
   "cleaned_dataset": "sapientinc/HRM-Text-data-io-cleaned-20260515",
   "cleaned_dataset_revision": "f033bc0e1a81634385093afc60445a52a7ade64a",
   "tokenizer_sha256": "d569c356b9c88d4fb5fc2ab43f0b9f9c445336d3121588f1f2f6e2bdbc6fdc0f",

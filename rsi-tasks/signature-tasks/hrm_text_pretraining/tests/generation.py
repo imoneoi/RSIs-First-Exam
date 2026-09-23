@@ -86,7 +86,7 @@ class ModelWorker:
             env['NVIDIA_VISIBLE_DEVICES'] = gpu_uuid or 'void'
             if 'LD_LIBRARY_PATH' in os.environ:
                 env['LD_LIBRARY_PATH'] = os.environ['LD_LIBRARY_PATH']
-            command = [sys.executable, '-I', '-B', '-X', 'pycache_prefix=/tmp/hrm-worker-pyc',
+            command = [sys.executable, '-I', '-B', '-X', 'pycache_prefix=' + str(Path(self.temporary.name) / 'pycache'),
                        str(Path(__file__).with_name('worker.py')), '--root', str(self.root),
                        '--device', device, '--cpu-seconds', str(int(timeout))]
             self.process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE,

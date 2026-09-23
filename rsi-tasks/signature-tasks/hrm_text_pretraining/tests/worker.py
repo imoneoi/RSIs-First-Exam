@@ -49,9 +49,14 @@ def main():
                 break
             with contextlib.redirect_stdout(sys.stderr):
                 if command['op'] == 'cache':
-                    batch = command['batch_size']
-                    cache = model.create_cache(max_batch_size=batch, max_seq_len=command['max_context'], dtype=torch.bfloat16, device=args.device)
-                    carry = core.initial_carry(batch, dtype=torch.bfloat16)
+                    batch_size = command['batch_size']
+                    # Batch cache views and previous results must also die before
+                    # allocation; otherwise adjacent groups transiently need 2x KV.
+                    batch = cache = carry = logits = tokens = lengths = None
+                    if args.device == 'cuda':
+                        torch.cuda.empty_cache()
+                    cache = model.create_cache(max_batch_size=batch_size, max_seq_len=command['max_context'], dtype=torch.bfloat16, device=args.device)
+                    carry = core.initial_carry(batch_size, dtype=torch.bfloat16)
                     send_json(outgoing, {'status': 'cached'})
                     continue
                 if command['op'] == 'inspect':

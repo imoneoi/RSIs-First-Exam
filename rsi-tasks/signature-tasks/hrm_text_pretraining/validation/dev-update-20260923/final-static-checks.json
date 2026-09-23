@@ -1,0 +1,210 @@
+{
+  "timestamp_utc": "2026-09-23T06:17:44.569368+00:00",
+  "python": "3.13.12 (main, Feb  4 2026, 20:16:28) [GCC 12.2.0]",
+  "command": [
+    "/usr/local/bin/python",
+    "checks/check_hrm_text.py",
+    "--static-only",
+    "--report",
+    "/sg-pretrain/one/hrm-text-rsi-update-20260923/final-static-checks.json"
+  ],
+  "packages": {},
+  "gpu_training": false,
+  "static_only": true,
+  "checks": [
+    {
+      "name": "check-canary.sh",
+      "passed": true,
+      "seconds": 0.192,
+      "output": "All files contain the required canary string\n"
+    },
+    {
+      "name": "check-dockerfile-references.sh",
+      "passed": true,
+      "seconds": 0.007,
+      "output": ""
+    },
+    {
+      "name": "check-dockerfile-sanity.sh",
+      "passed": true,
+      "seconds": 0.008,
+      "output": ""
+    },
+    {
+      "name": "check-dockerfile-platform.sh",
+      "passed": true,
+      "seconds": 0.005,
+      "output": ""
+    },
+    {
+      "name": "check-task-absolute-path.sh",
+      "passed": true,
+      "seconds": 0.024,
+      "output": ""
+    },
+    {
+      "name": "check-test-file-references.sh",
+      "passed": true,
+      "seconds": 0.022,
+      "output": ""
+    },
+    {
+      "name": "check-test-sh-sanity.sh",
+      "passed": true,
+      "seconds": 3.484,
+      "output": ""
+    },
+    {
+      "name": "check-task-fields.sh",
+      "passed": true,
+      "seconds": 0.02,
+      "output": "Checking rsi-tasks/signature-tasks/hrm_text_pretraining/task.toml...\nAll task.toml files contain the required fields with valid values\n"
+    },
+    {
+      "name": "check-task-timeout.sh",
+      "passed": true,
+      "seconds": 3.351,
+      "output": "Checking rsi-tasks/signature-tasks/hrm_text_pretraining/task.toml...\nAll task.toml timeouts satisfy the 5h cap or an explicit signature smoke-only contract\n"
+    },
+    {
+      "name": "check-instruction-suffix.sh",
+      "passed": true,
+      "seconds": 3.341,
+      "output": "Checking rsi-tasks/signature-tasks/hrm_text_pretraining...\nAll instruction.md files end with the canonical timeout/anti-cheat line\n"
+    },
+    {
+      "name": "check-gpu-types.sh",
+      "passed": true,
+      "seconds": 0.008,
+      "output": "All task.toml gpu_types values are canonical\n"
+    },
+    {
+      "name": "check-allow-internet.sh",
+      "passed": true,
+      "seconds": 3.303,
+      "output": "Checking rsi-tasks/signature-tasks/hrm_text_pretraining/task.toml...\nAll task.toml files allow internet access\n"
+    },
+    {
+      "name": "check-no-allow-internet-true.sh",
+      "passed": true,
+      "seconds": 3.425,
+      "output": "Checking rsi-tasks/signature-tasks/hrm_text_pretraining/task.toml...\nAll task.toml files omit an explicit allow_internet = true\n"
+    },
+    {
+      "name": "check-task-slug.sh",
+      "passed": true,
+      "seconds": 0.005,
+      "output": "PASS rsi-tasks/signature-tasks/hrm_text_pretraining (1 tokens)\n"
+    },
+    {
+      "name": "check-verifier-tooling-baked.sh",
+      "passed": true,
+      "seconds": 3.541,
+      "output": "All separate-verifier tasks bake their verifier tooling into the image\n"
+    },
+    {
+      "name": "check-trial-network-fetch.sh",
+      "passed": true,
+      "seconds": 3.518,
+      "output": "Skipping rsi-tasks/signature-tasks/hrm_text_pretraining (shared verifier mode; check applies in separate mode only)\nNo external trial-time fetches in tests/test.sh\n"
+    },
+    {
+      "name": "check-pip-pinning.sh",
+      "passed": true,
+      "seconds": 3.295,
+      "output": "Checking rsi-tasks/signature-tasks/hrm_text_pretraining...\nAll pip / uv pip / uvx --with installs are pinned\n"
+    },
+    {
+      "name": "check-pytest-version.sh",
+      "passed": true,
+      "seconds": 3.428,
+      "output": "Checking rsi-tasks/signature-tasks/hrm_text_pretraining...\nPASS\n"
+    },
+    {
+      "name": "check-nproc.sh",
+      "passed": true,
+      "seconds": 10.077,
+      "output": "Checking rsi-tasks/signature-tasks/hrm_text_pretraining...\nAll scripts avoid bare nproc\n"
+    },
+    {
+      "name": "check-compose-host-binds.sh",
+      "passed": true,
+      "seconds": 0.005,
+      "output": "PASS rsi-tasks/signature-tasks/hrm_text_pretraining\n"
+    }
+  ],
+  "source_sha256": {
+    ".github/workflows/hrm-text-checks.yml": "ef2893990865e85b2e2910d6921ee5d7107d16ed69a267320b912123441979c2",
+    "checks/check-task-timeout.sh": "94d8a7ae78f51f88f9e36839bcf5bb538bb54199a61b0598f985d5b996a24072",
+    "checks/check_hrm_text.py": "fcd5e71bb4f7100ba0a2e521c2b3f8949e0a346adeb7e30fb996672c3a4f0adf",
+    "checks/test_task_timeout.py": "407e12d177382b403930f658a7312435b2728bf8885d994b5bef573931b70a05",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/.gitignore": "e6f1cbcf7d7e66b4f37b9d4a4c92d3574a5e7673c28a555e900b6baf39d156e3",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/README.md": "3fb20d4912c1923b7a7f589ea6b5f7d8d98e112b5fffaf039eaf91f247bfd61c",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/VALIDATION.md": "656b3aed60699eb7f8160cc465287f3bbe7a09cbaf743e0939764e004bf93f72",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/configure.py": "dcc187c48466f039417847a4ea96d2f69bc92b456b9e636b8b9d1ed4a92e08d6",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/.dockerignore": "cf9143fdfce145f9234e589317912e7c9fad341276064294f22da3946d23758e",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/Dockerfile": "345178d9e5bc27582d697609e2280a6a7e3a7d4bef40259c51a48bbc704ce3c8",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/README.md": "fc4d6b49507c4a9969d0e4b1a1ff06ee1a6dae00a51c409773c102007f306a5e",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/compact_sampled.py": "cd09dd1269de627939e4c4d1553d27489ffa6f2de5dbe058d102d3bec004551c",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/data_sources.json": "958f21f7d2539b1f8d2bb3cf5ecded06dea84b498b0a5567f7349c233131fd8b",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/download_sampled.py": "800d434387a501b071c69f5288c88c2f36b3fd290092cb628c35717bc74eef38",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/prepare_data.py": "d716fc3973a89c14b02fceaa4a8b574e72079f7608c693656d221bb782c181c5",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/requirements-data.txt": "d70754a3390df292867adc75b647ddc13d9f0d4649543deaeae3d7d479ada8ee",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/sampled_layout.py": "e05e2e53571b5779ca73a099bdbebf5ef595784607f6589e496b02856fba485e",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/sampled_release.json": "3351dc55e24b2ed90e9339acc67a15742e717ae8063c106d91bcd989532fc8eb",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/test_compaction.py": "e2d5f4b016f542823b6cf1be9de5f581206f9554b4d7ffb7a0407018e9b4d7e4",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/test_download_sampled.py": "bfaa7d106ff6796b2cfb0bbeacafc1bbf95738f6310e7376cf59bf0b6d8e4714",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/test_sampling_epochs.py": "a9800677b8c758ebbd56962bad6fdb7911421908b9ebafcee515d3ef54f39de9",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/setup/test_tokenized_cache.py": "32a3cebfcda1d68ce3821047cf15f5fb70183ac12733192e3358c6e77a6cd7ce",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/ARCHITECTURE.md": "f8f68792c5b7025d4621d8198dba842a4f1a70c65eb2dccaa8296d3e8e173816",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/calibrate.py": "eeb3560b9d583bec46238cbb38362a4c347d43c77412c3baffe68416cad44219",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/compute_budget.py": "2ecb2a82eb3342a97a8b6f47f51468c61ee92db0ce3a08bf0cd3186a6f88e4ff",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/detach.py": "92c591caf93f5a66e9c25e3906e64060f34fb3896248380efa78a4494b20976e",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/launch.sh": "5893dfe0483c289b080520413ebd7731b01ff81ef9eb4c2cafba6b488527b254",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/profile.json": "4c3eb952e2fd06600a50b08f08a06859deace8b0575ca5d3c3ddfb1c8bba103d",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/profiles.py": "15d8a2cf59bb9161f44d5648a74dcf2e4cb88770be34bc8da8a33556f8293770",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/test_checkpoint_metadata.py": "463165038f7c4974778727c64e0dc7f63f4e388843331573cb59657ff8c30fdb",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/test_compute_budget.py": "708f8b16739e245a51623fcff2fb58a1cdb553eaab98b37dffb8e4bace10a75d",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/test_resume_accounting.py": "0deb05bc9cefc3da272fcbee9eaf63aa5335b48673f2b11b056070e9eb2a622a",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/test_resume_audit.py": "3a38b88f8fd748b4a4a9850f5f4897f60d22b35f79311888bae59de07870ae81",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/test_training_cli.py": "f562135f4e8e34ea8b610ae99a2b6ba2b0bf2e509e9364b679e62e6fade17874",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/test_training_groups.py": "353f0fee2f1d2b3e58ce65b2611287e8e7fae4b41f3d36f2db1a0a2c1143400c",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/environment/task-tools/train.py": "d5cc528cd12df69b7dbb39c87346cd8d98ac8ecf3a47456087cc2bb7419825b6",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/instruction.md": "d89034485a2d09614efa404a8a22d26485aa326609bb2805635032d486f455b8",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/policy.yaml": "838657db9fadcf29dd7d01a06519e3fa69e2fc0f824c9f559dc076059a158403",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/reported_baselines.json": "8a0867cd8f55e837060ed64fe7ac566a7dc04f0883282256b799bd5950914b28",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/task.toml": "1f600d7c589af74c80b66df017e756ab46cc7e71ed91fff3456e5efa37feea3b",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/.dockerignore": "cf9143fdfce145f9234e589317912e7c9fad341276064294f22da3946d23758e",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/Dockerfile": "303ae4182913475391b7ac5b44d3b3a12c7e11e2c4496968ec7cdafcc288bbec",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/EVALPLUS_APACHE_LICENSE": "fcc1f77fe5443b21bfc4dfcc3d66f7654f599b91582df771850e5e876986a103",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/EVALPLUS_LICENSE": "9f17961c66b8b409ae08a8acd7e79c8c035ee7bff7ea590239d9a702658e10f2",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/HUMANEVAL_VALIDATION.md": "e47481d016f6bcc3da99ca5b2cccd8233f076f32c460696e65f66146b16cf571",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/benchmark-revisions.json": "effe41662504ec6dd4da5f040282b31a3ff39da79dd3f0bb3b16fa0fd0f5877d",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/benchmark_contract.json": "8e5364c51ec84d6c8335fdc89fd5677d577e6ec711f156f4d551721576a3de40",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/candidate.py": "495d386e755e19616c5315b2f37d8edd9e8d68b77cd53cfa8f95844cde230a5b",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/code_values.py": "313c0c6c769e4b4ae452b3fafd476de9989a6ac825b452beee2c921882a05594",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/code_worker.py": "966fa39c7accd7562b31620da39a1eddc4fdd7ba7eb3a0bc41cb2e8a4a19eb2a",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/data-release.json": "3351dc55e24b2ed90e9339acc67a15742e717ae8063c106d91bcd989532fc8eb",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/evaluate.py": "f63646b04d229a820e5b038e4b9719641cbb1c071f07df4f2f2220e81ce7ce5d",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/generation.py": "ab4c103853adea8f1e6d673d060a084daafd3eeef4d8fafd8cf8cff970801245",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/humaneval.py": "8b316431fc83ccb9e60f5e914eae90677e364f7731252041917f7455476a1d4a",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/profile.json": "4c3eb952e2fd06600a50b08f08a06859deace8b0575ca5d3c3ddfb1c8bba103d",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/protocol.py": "9d25142c48a15304892017c7f138872d6db98efb132db8566be1820af80ab49e",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/sandbox.py": "a5f8636e0525b0b67b45f480f89b2ebc40bfd442f23ec0ce1c4e83ac3535c686",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/score.py": "9ed469bab98b7e65a96d266582b3ece917bbb90b5d5772e76cb6eb914fe3e269",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/stage_humaneval.py": "7ebcf4e3a0ff86d4eaf29642cf03e99e18f64551b60bee74bf7d2b04533bfd76",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/stage_reference.py": "e2dcfd92431368553d4a956181c5b5b520bfc9002b09cf26b3d718b088e7bd6a",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test.sh": "175162bcfbb36abcd8cc6eb80c3a8675dc8599c63e68c7824ec38cd4b7e66dc1",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_architecture.py": "36c3bf54875f2b88e2878173aca32773021d408b39e1fb245c2654c7e39a0453",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_contract.py": "e569820f14d44de24c2d488cd6ef0ea92a4a87520c291de5f081596d2925bb46",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_generation.py": "7b09583c617fdefdd991c321670056dac35349af5f278d41e1e8a69f55b922ee",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_humaneval.py": "462f3f28ecb83375cda93fc0245a69320470b76d6a67cad6de6f6cc7e4eb8077",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_profiles.py": "84d8d99ce46040db637383e7acd21878797fd7325fbfbd67d8dbb34a3af8342d",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_reference_locks.py": "3249dc736577d2a657aac6f41b84edf27028f76df3760fad2af6615c176319ea",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_reward_publication.py": "ab216f31c06a63938af8cfd26bfdb8232adad1abffb2f5a3c49ade4283f045d5",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_stage_reference.py": "2567db3fc94b772cf28fb538375e2bb7e6231a2dc6a13027b50d84bfb8fbca26",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/test_worker_runtime.py": "723fa09051881477c23d12cfb3629aeda34d837dfa35fa05c1f02e9a2779dd34",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/track_profiles.py": "15d8a2cf59bb9161f44d5648a74dcf2e4cb88770be34bc8da8a33556f8293770",
+    "rsi-tasks/signature-tasks/hrm_text_pretraining/tests/worker.py": "2892593817ea8680d4095ddaaee8e4bf137c91b0092a2a5e4a6ac53399b62b5e"
+  }
+}

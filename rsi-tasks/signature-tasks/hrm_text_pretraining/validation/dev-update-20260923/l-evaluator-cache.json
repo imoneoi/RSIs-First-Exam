@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "diagnostic": true,
+  "reward": 0,
+  "size": "L",
+  "profile": {
+    "agent_timeout_seconds": 104400,
+    "attempt_wall_seconds": 100800,
+    "baseline_estimate_seconds": 90000.0,
+    "baseline_global_batch": 147456,
+    "baseline_lr": 0.00022,
+    "budget_note": "Per-experiment active training time, including resumed/discarded work in its lineage. Compilation, data loading, checkpoint/export and final verification are excluded; wall watchdogs are separate. A time-limited checkpoint may score before one full epoch.",
+    "calibration": null,
+    "checkpoint_grace_seconds": 3600,
+    "clock": "synchronized_training_minus_compile",
+    "compilation_grace_seconds": 7200,
+    "compute_budget_seconds": 90000,
+    "ema": 0.9995,
+    "epochs": 2,
+    "expected_evaluation_seconds": 3600,
+    "gpus": 8,
+    "gpus_per_node": 8,
+    "hardware_estimate_note": "Contributor-reported 8-H100-per-node baseline; changed GPU count uses an ideal linear estimate. Calibrate on the deployment hardware/data before treating estimates as measured runtimes.",
+    "id": "standard-l-1n8gpu-2ep",
+    "max_source_bytes": 16000000,
+    "max_weights_bytes": 16000000000,
+    "minimum_training_epochs": 0,
+    "nodes": 1,
+    "reference_compute_seconds": 90000,
+    "reference_gpus": 8,
+    "reference_nodes": 1,
+    "schema_version": 2,
+    "size": "L",
+    "stop_policy": "epochs_or_compute_budget",
+    "tier": "Standard",
+    "track": "standard-l",
+    "verifier_allocated_gpus": 1,
+    "verifier_gpus": 1,
+    "verifier_timeout_seconds": 7200
+  },
+  "weights_sha256": "e6bd940bbc1638daacdebca4179c050a09f1dcd5cfaf390c72720dd443bd7e00",
+  "worker_source_sha256": "2892593817ea8680d4095ddaaee8e4bf137c91b0092a2a5e4a6ac53399b62b5e",
+  "model_manifest_sha256": "941ae46796f0ff23f6161eceae56be17f468977ec277f349a53a1924115ad89a",
+  "worker_setup_seconds": 74.19340696930885,
+  "total_wall_seconds": 85.03104598075151,
+  "cache_reallocation_and_forward": [
+    {
+      "iteration": 0,
+      "batch_size": 33,
+      "max_context": 3072,
+      "allocation_seconds": 0.027515806257724762,
+      "gpu_inventory": [
+        "0, GPU-be4f5e2f-c876-4f6d-34d9-a67695e1115d, 49647 MiB",
+        "1, GPU-9d22e3b5-9b0c-2600-2ca8-3850ee1933f4, 4 MiB",
+        "2, GPU-37da425f-b5d6-06e0-049d-ce6d7bc9a3e9, 4 MiB",
+        "3, GPU-a23f5791-16fd-97cf-6fdb-4c1c7174f1de, 4 MiB",
+        "4, GPU-b3df3489-ea88-5bde-3257-9a6151256a3b, 4 MiB",
+        "5, GPU-e8d57030-abcd-93f1-c2d2-cb00a0b0e5de, 4 MiB",
+        "6, GPU-715442ba-444e-ab03-e249-3c8921322439, 4 MiB",
+        "7, GPU-b0d05268-ad57-2325-302c-28d6bf71e9a2, 4 MiB"
+      ],
+      "forward_seconds": 0.17388246953487396,
+      "argmax": [
+        55163
+      ],
+      "after_forward_gpu_inventory": [
+        "0, GPU-be4f5e2f-c876-4f6d-34d9-a67695e1115d, 49767 MiB",
+        "1, GPU-9d22e3b5-9b0c-2600-2ca8-3850ee1933f4, 4 MiB",
+        "2, GPU-37da425f-b5d6-06e0-049d-ce6d7bc9a3e9, 4 MiB",
+        "3, GPU-a23f5791-16fd-97cf-6fdb-4c1c7174f1de, 4 MiB",
+        "4, GPU-b3df3489-ea88-5bde-3257-9a6151256a3b, 4 MiB",
+        "5, GPU-e8d57030-abcd-93f1-c2d2-cb00a0b0e5de, 4 MiB",
+        "6, GPU-715442ba-444e-ab03-e249-3c8921322439, 4 MiB",
+        "7, GPU-b0d05268-ad57-2325-302c-28d6bf71e9a2, 4 MiB"
+      ]
+    },
+    {
+      "iteration": 1,
+      "batch_size": 33,
+      "max_context": 3072,
+      "allocation_seconds": 0.13281937688589096,
+      "gpu_inventory": [
+        "0, GPU-be4f5e2f-c876-4f6d-34d9-a67695e1115d, 49745 MiB",
+        "1, GPU-9d22e3b5-9b0c-2600-2ca8-3850ee1933f4, 4 MiB",
+        "2, GPU-37da425f-b5d6-06e0-049d-ce6d7bc9a3e9, 4 MiB",
+        "3, GPU-a23f5791-16fd-97cf-6fdb-4c1c7174f1de, 4 MiB",
+        "4, GPU-b3df3489-ea88-5bde-3257-9a6151256a3b, 4 MiB",
+        "5, GPU-e8d57030-abcd-93f1-c2d2-cb00a0b0e5de, 4 MiB",
+        "6, GPU-715442ba-444e-ab03-e249-3c8921322439, 4 MiB",
+        "7, GPU-b0d05268-ad57-2325-302c-28d6bf71e9a2, 4 MiB"
+      ],
+      "forward_seconds": 0.043894484639167786,
+      "argmax": [
+        55163
+      ],
+      "after_forward_gpu_inventory": [
+        "0, GPU-be4f5e2f-c876-4f6d-34d9-a67695e1115d, 49767 MiB",
+        "1, GPU-9d22e3b5-9b0c-2600-2ca8-3850ee1933f4, 4 MiB",
+        "2, GPU-37da425f-b5d6-06e0-049d-ce6d7bc9a3e9, 4 MiB",
+        "3, GPU-a23f5791-16fd-97cf-6fdb-4c1c7174f1de, 4 MiB",
+        "4, GPU-b3df3489-ea88-5bde-3257-9a6151256a3b, 4 MiB",
+        "5, GPU-e8d57030-abcd-93f1-c2d2-cb00a0b0e5de, 4 MiB",
+        "6, GPU-715442ba-444e-ab03-e249-3c8921322439, 4 MiB",
+        "7, GPU-b0d05268-ad57-2325-302c-28d6bf71e9a2, 4 MiB"
+      ]
+    }
+  ],
+  "post_worker_gpu_inventory": [
+    "0, GPU-be4f5e2f-c876-4f6d-34d9-a67695e1115d, 4 MiB",
+    "1, GPU-9d22e3b5-9b0c-2600-2ca8-3850ee1933f4, 4 MiB",
+    "2, GPU-37da425f-b5d6-06e0-049d-ce6d7bc9a3e9, 4 MiB",
+    "3, GPU-a23f5791-16fd-97cf-6fdb-4c1c7174f1de, 4 MiB",
+    "4, GPU-b3df3489-ea88-5bde-3257-9a6151256a3b, 4 MiB",
+    "5, GPU-e8d57030-abcd-93f1-c2d2-cb00a0b0e5de, 4 MiB",
+    "6, GPU-715442ba-444e-ab03-e249-3c8921322439, 4 MiB",
+    "7, GPU-b0d05268-ad57-2325-302c-28d6bf71e9a2, 4 MiB"
+  ]
+}

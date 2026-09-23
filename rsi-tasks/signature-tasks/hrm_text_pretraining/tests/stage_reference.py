@@ -16,11 +16,12 @@ import sys
 import tarfile
 import tempfile
 
-from evaluate import EXPECTED_BENCHMARK_COUNTS, validate_benchmark_record
+from evaluate import EXPECTED_BENCHMARK_COUNTS, validate_benchmark_record, validate_data_release
 
-COMMIT = 'aaa948ea674fd84b7bc455c9cfb455ecfefdf914'
+COMMIT = 'c2865cf8df3caf53b6ec44a223fdccc4d276a20e'
 DATASETS = ('gsm8k', 'EleutherAI/hendrycks_math', 'EleutherAI/drop', 'cais/mmlu',
-            'allenai/ai2_arc', 'Rowan/hellaswag', 'allenai/winogrande', 'google/boolq')
+            'allenai/ai2_arc', 'Rowan/hellaswag', 'allenai/winogrande', 'google/boolq',
+            'TIGER-Lab/MMLU-Pro', 'evalplus/humanevalplus')
 
 
 def digest(path):
@@ -66,14 +67,19 @@ def main():
     parser.add_argument('--sampled', type=Path, required=True)
     parser.add_argument('--tokenizer', type=Path, help='Matching tokenizer directory; otherwise use sampled metadata or its staged sibling tokenizer/')
     parser.add_argument('--output', type=Path, default=Path(__file__).parent / 'staged')
+    parser.add_argument('--data-release-lock', type=Path, default=Path(__file__).with_name('data-release.json'))
     parser.add_argument('--revision-lock', type=Path, default=Path(__file__).parent / 'benchmark-revisions.json')
     parser.add_argument('--skip-benchmarks', action='store_true')
+    parser.add_argument('--humaneval-oracles', type=Path, help='Reuse operator-precomputed, contract-matching HumanEval+ oracles')
+    parser.add_argument('--humaneval-data', type=Path, help='Optional SHA-pinned HumanEvalPlus-v0.1.10 jsonl[.gz]; otherwise downloaded during staging')
     args = parser.parse_args()
     root = args.output.resolve()
     if root.exists() and any(root.iterdir()):
         raise FileExistsError(f'Refusing to mix reference artifacts into nonempty output: {root}')
     sampled_manifest, epoch_ids = validate_sampled_identity(args.sampled)
+    validate_data_release(args.sampled / 'data_manifest.json', args.data_release_lock)
     root.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(args.data_release_lock, root / 'data-release.json')
     source = root / 'hrm-reference'
     if source.exists():
         raise FileExistsError(f'Refusing to overwrite {source}')
@@ -120,6 +126,7 @@ def main():
     # Retain the upstream L reference configuration for compatibility. The
     # evaluator chooses the submitted model profile; data metadata is shared.
     (ref / 'config.json').write_text(json.dumps(OmegaConf.to_container(config, resolve=True), indent=2) + '\n')
+    shutil.copy2(Path(__file__).with_name('benchmark_contract.json'), root / 'benchmark_contract.json')
     provenance = {'hrm_commit': COMMIT, 'benchmarks_complete': False, 'benchmark_counts': {},
                   'data_available_epoch_ids': epoch_ids, 'data_available_epoch_count': len(epoch_ids)}
     if not args.skip_benchmarks:
@@ -134,7 +141,7 @@ def main():
         benchmarks.get_dataset_config_names = lambda path, **kw: original_configs(path, revision=revisions[path], **kw)
         cfg = OmegaConf.to_container(OmegaConf.load(source / 'evaluation/config/hrm_benchmarking.yaml'), resolve=True)
         if [entry['name'] for entry in cfg['benchmarks']] != list(EXPECTED_BENCHMARK_COUNTS):
-            raise ValueError('Pinned upstream configuration does not match the expected eight benchmarks')
+            raise ValueError('Pinned upstream configuration does not match the expected ten benchmarks')
         destination = root / 'benchmarks'
         destination.mkdir()
         for entry in cfg['benchmarks']:
@@ -145,6 +152,17 @@ def main():
             record = {'name': name, 'prompts': list(benchmark.prompts), 'ground_truths': list(benchmark.ground_truths),
                       'generation_config': cfg['generation_config'] | benchmark.generation_overrides | generation}
             provenance['benchmark_counts'][name] = validate_benchmark_record(name, record)
+            if name == 'HumanEval':
+                from humaneval import validate_oracles
+                oracle_path = root / 'humaneval/oracles.json'
+                if args.humaneval_oracles:
+                    validate_oracles(json.loads(args.humaneval_oracles.read_text()), record['ground_truths'])
+                    oracle_path.parent.mkdir()
+                    shutil.copy2(args.humaneval_oracles, oracle_path)
+                    provenance['humaneval_execution'] = {'tasks': 164, 'sha256': digest(oracle_path)}
+                else:
+                    from stage_humaneval import stage_humaneval
+                    provenance['humaneval_execution'] = stage_humaneval(oracle_path, record['ground_truths'], args.humaneval_data)
             (destination / f'{name}.json').write_text(json.dumps(record, default=lambda x: sorted(x) if isinstance(x, set) else x) + '\n')
             print(f'{name}: {len(benchmark.prompts)} prompts', flush=True)
         provenance['benchmarks_complete'] = True

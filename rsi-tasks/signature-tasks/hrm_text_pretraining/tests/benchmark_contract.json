@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "hrm_revision": "c2865cf8df3caf53b6ec44a223fdccc4d276a20e",
+  "benchmarks": [
+    {
+      "name": "GSM8k",
+      "records": 1319,
+      "metric": "acc"
+    },
+    {
+      "name": "MATH",
+      "records": 5000,
+      "metric": "acc"
+    },
+    {
+      "name": "MMLUPro",
+      "records": 12032,
+      "metric": "acc"
+    },
+    {
+      "name": "HumanEval",
+      "records": 164,
+      "metric": "pass@1_plus"
+    },
+    {
+      "name": "DROP",
+      "records": 9536,
+      "metric": "f1"
+    },
+    {
+      "name": "MMLU",
+      "records": 14042,
+      "metric": "acc"
+    },
+    {
+      "name": "ARC",
+      "records": 1172,
+      "metric": "acc"
+    },
+    {
+      "name": "HellaSwag",
+      "records": 10042,
+      "metric": "acc"
+    },
+    {
+      "name": "Winogrande",
+      "records": 1267,
+      "metric": "acc"
+    },
+    {
+      "name": "BoolQ",
+      "records": 3270,
+      "metric": "acc"
+    }
+  ],
+  "humaneval": {
+    "evalplus_version": "0.3.1",
+    "dataset_version": "v0.1.10",
+    "url": "https://github.com/evalplus/humanevalplus_release/releases/download/v0.1.10/HumanEvalPlus.jsonl.gz",
+    "gzip_sha256": "272720b90ac375502c8ed23cd791c2a93dfb22a911641a494da74a426c09f101",
+    "jsonl_sha256": "42526ec0e7d5f3ee0b06d6ced98f8c8bae3d76519151bfb3d36f79010645bd7f",
+    "min_time_limit": 1,
+    "gt_time_limit_factor": 4,
+    "max_task_seconds": 60,
+    "execution": "confined CPU function worker; expected outputs and comparison in parent",
+    "eval_source_sha256": "76857b678cddca08dcaf54d7927b9a77826715cf657654ca5baf6c2b267f4c34"
+  }
+}

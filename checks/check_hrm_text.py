@@ -18,7 +18,7 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 TASK_REL = Path('rsi-tasks/signature-tasks/hrm_text_pretraining')
 TASK = ROOT / TASK_REL
-HRM_REVISION = 'aaa948ea674fd84b7bc455c9cfb455ecfefdf914'
+HRM_REVISION = 'c2865cf8df3caf53b6ec44a223fdccc4d276a20e'
 UNITTEST = '''
 import json, sys, unittest
 suite = unittest.defaultTestLoader.discover(sys.argv[1], pattern=sys.argv[2])
@@ -115,7 +115,7 @@ def main():
                   'command': [sys.executable, *sys.argv],
                   'packages': {} if args.static_only else {
                       name: importlib.metadata.version(name) for name in
-                      ('torch', 'numpy', 'safetensors', 'omegaconf', 'pydantic', 'PyYAML', 'tqdm', 'huggingface_hub')},
+                      ('torch', 'numpy', 'safetensors', 'omegaconf', 'pydantic', 'PyYAML', 'tqdm', 'huggingface_hub', 'evalplus')},
                   'gpu_training': False, 'static_only': args.static_only, 'checks': records,
                   'source_sha256': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                                     for p in sorted(sources)}}

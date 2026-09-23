@@ -1,86 +1,42 @@
 # HRM-Text data preparation
 
-Run these commands on a staging host with network access, Python, Git, Rust/Cargo,
-and enough disk space. Training and grading use baked, read-only data and can run
-offline. Large datasets and caches are not committed to Git.
-
-The [public data_io README](https://github.com/sapientinc/data_io/tree/c82cd5f66459c5e66709e8430eccf8daecd0ca7d)
-links a [cleaned Hugging Face corpus](https://huggingface.co/datasets/sapientinc/HRM-Text-data-io-cleaned-20260515/tree/f033bc0e1a81634385093afc60445a52a7ade64a).
-This skips changing raw sources and their cleaning dependencies. It contains
-instruction/response text, **not token arrays**: Rust tokenization is still needed.
-`data_sources.json` pins the source commits, tokenizer digest, and sampling rules.
+Use the frozen four-epoch sampled release for this task. Downloading it avoids
+repeating cleaning, tokenization and stratified sampling, and gives every track
+identical input bytes. The initial repository is private in the `sapientinc`
+organization; the staging operator needs an authorized Hugging Face login.
+Credentials remain on the staging host. Work and Judge images run offline.
 
 ```bash
 python -m pip install -r environment/setup/requirements-data.txt
-python environment/setup/prepare_data.py \
-  --cache /mnt/hrm-text-build-cache \
-  --output /mnt/hrm-text-sampled \
-  --epochs 4 \
-  --compact \
-  --stage environment/staged
+python environment/setup/download_sampled.py \
+  --cache /mnt/hrm-text-hf-cache \
+  --output environment/staged
 ```
 
-The script downloads only `data/` and `data_clustered/`, uses the published BPE
-tokenizer, invokes Cargo with the upstream lockfile, and samples one through four
-epochs (`--epochs`, default 4) with Philox seed 0 and the pinned upstream prefix
-configuration. Sampling one epoch produces the same first epoch as sampling four;
-changing the requested count does not change the sampler or mixture rules. Later
-epochs can contain previously unselected documents because stratified sampling
-continues through each source's permutation. The
-sampler's `context_size=4097` includes the one-token autoregressive shift, so the
-training context is 4096. The upstream sampler initially retains the complete
-corpus in a token mmap; epoch indices select the stratified training mixture.
-`--compact` then retains only the union of token ranges referenced by all available
-epochs and remaps the start offsets. It preserves every instruction/response
-token, sequence length, and row order. This reduces image storage and removes
-source tokens never selected for the fixed training mixture. The original sampler
-output remains in a sibling `.uncompacted` directory; budget space for both until
-release validation is done. Compaction sorts all referenced intervals in host
-memory (approximately 64 bytes per instruction/response interval), then copies
-retained tokens in bounded blocks. For a completed sample, use a separate output:
+[`sampled_release.json`](sampled_release.json) pins the dataset repository, exact
+Hub commit and sampled manifest SHA-256. The downloader verifies every complete
+file hash, the tokenizer, all four epoch index sets, their bounds and lengths,
+and the release descriptor. It stages regular files, using hard links when
+possible, and publishes the output directory only after validation. It refuses
+to overwrite an existing destination. The source manifest is preserved exactly;
+its tokenizer path already names `/datasets/hrm-text/tokenizer`.
 
 ```bash
-python environment/setup/compact_sampled.py \
-  --source /mnt/hrm-text-sampled.uncompacted \
-  --output /mnt/hrm-text-compacted
+# Reuse a previously downloaded snapshot without any network access.
+python environment/setup/download_sampled.py --offline \
+  --cache /mnt/hrm-text-hf-cache --output /mnt/hrm-text-offline-staged
+
+# Authenticate an existing staging directory without changing it.
+python environment/setup/download_sampled.py --verify-only \
+  --output environment/staged
 ```
 
-For canonical HF releases, use `--compact` in the initial preparation command;
-canonical `--existing-sampled` requires an already finalized canonical manifest.
-Separate compaction does not establish that provenance by itself. A separate
-compacted output can be manifested as a diagnostic using `--existing-sampled`
-with explicit local source/tokenizer/prefix arguments. Never
-replace a dataset used by an active training run. `compaction.json` records the
-source manifest digest, retained token count, and storage transformation. The
-source files are never modified.
-
-The script validates all sampled index bounds and lengths and emits a JSON manifest
-with epoch row/token counts, full SHA-256 hashes for sampled arrays, tokenizer,
-prefix configuration and sampler, plus a size inventory of the source arrays.
-`available_epoch_ids` and `available_epoch_count` seal the actual contiguous epoch
-directories; `sampling_parameters.epochs` records the actual sampled count. The
-legacy `validation.epochs` list remains available, and `pins.epochs=4` retains the
-default used by earlier releases. `metadata.json` stores the mean token count over
-all available epochs, while the manifest also records each epoch's exact count.
-The source inventory does **not** independently authenticate source file contents.
-The sampled hashes are the identity to freeze for a published task release.
-Pin the staging Python environment to `requirements-data.txt`; preserve the Rust
-version/build log and resulting manifest with the release artifacts.
-
-The HF download uses the pinned snapshot cache and a separate view of regular
-files, linked or copied from that snapshot: the upstream Rust scanner skips HF
-cache symlinks. Reuse checks this view against the exact snapshot inventory.
-Tokenization checks the exact cleaned shard inventory and every
-completion record and array before publishing `rsi_tokenization_receipt.json`.
-This is necessary because the pinned Rust program logs individual shard errors
-without returning a failing exit code. Reusing the tokenized cache requires a
-matching recipe, source inventory, and full content hashes; reuse does not rerun
-the tokenizer. Hashing can read hundreds of GiB. A nonempty cache without this
-receipt, an interrupted build, or a changed tokenizer is rejected. Supply a fresh
-`--cache` directory to rebuild; existing caches are never refreshed or deleted.
-
-`environment/staged` contains real files (hard links when the filesystem allows
-them), suitable for Docker `COPY`:
+The data manifest records its original `operator_supplied_local_tokenized`
+lineage. It does not claim to reproduce the older public cleaned-HF recipe.
+Its `canonical_dataset` descriptor and the separately pinned commit/manifest
+identify the task release. Keeping the Hub revision outside the dataset's own
+manifest avoids a circular reference. No benchmark cache or pretrained weights
+belong in this release.
 
 | Build input | Container path |
 | --- | --- |
@@ -88,73 +44,82 @@ them), suitable for Docker `COPY`:
 | `staged/tokenizer` | `/datasets/hrm-text/tokenizer` |
 | `staged/data_manifest.json` | `/datasets/hrm-text/data_manifest.json` |
 
-The staged metadata tokenizer path is rewritten for the container and its manifest
-digest is updated. Original sampled files remain unchanged. Prefer sampling to
-persistent staging storage for image builds; sampling to `/dev/shm` and copying to
-disk requires additional storage. Existing output/staging directories are never
-overwritten automatically.
+The complete sampled artifact has four immutable epoch index sets. A one-epoch
+track uses only `epoch_0`; two epochs use `epoch_0` and `epoch_1`; four epochs use
+all four. Selecting a track does not regenerate data or change its manifest.
+Later epochs can contain previously unseen documents. A scored attempt must
+meet the task's current exposure and computation-time policy; short smoke runs
+are infrastructure diagnostics.
 
-## Existing tokenized data on this test machine
+## Reproducing sampling from the supplied tokenized corpus
 
-The supplied corpus is at
-`/sg-pretrain/one/data_io/data_tokenized_bpe_chat_code_65k`; use its matching
-`trained_tokenizers/bpe_chat_code` tokenizer and local `prefix_config.yaml`:
+[`data_sources.json`](data_sources.json) pins the public `data_io` dev commit
+`3728ebea6b6a7ff554af4e51350e6fd9e4b83fa6`. Its `sample_tokenized.py` and
+`prefix_config.yaml` match the local v3 checkout's corresponding files exactly.
+The corpus on this machine is read-only input:
 
 ```bash
 python environment/setup/prepare_data.py \
+  --cache /mnt/hrm-text-build-cache \
   --source-tokenized /sg-pretrain/one/data_io/data_tokenized_bpe_chat_code_65k \
   --tokenizer /sg-pretrain/one/data_io/trained_tokenizers/bpe_chat_code \
   --prefix-config /sg-pretrain/one/data_io/prefix_config.yaml \
-  --output /dev/shm/hrm_text_rsi \
-  --manifest /mnt/hrm-text-results/data_manifest.json
+  --output /mnt/hrm-text-new-sampled \
+  --epochs 4
 ```
 
-Add `--existing-sampled` to validate a completed sampler run without resampling.
-An existing finalized manifest is checked and retained byte-for-byte, including
-older four-epoch manifests. `--epochs` controls only new sampling: selecting one
-training epoch from a four-epoch artifact does not alter its data, prefix mix, or
-manifest identity. Set the selected epoch budget in the training command, which
-consumes the first N available epochs. A scored run requires at least one complete
-epoch; partial smoke runs remain diagnostic and receive zero reward. Model size
-(L or XL) and GPU topology do not change the sampled data layout.
+Use a new output path. Never replace data used by an existing run. The dev
+sampler directly retains only sampled, truncated rows and writes `uint16`
+tokens for this 65,536-token vocabulary. The separate `--compact` transformation
+is unnecessary for this sampler; it remains available for older artifacts.
+Seed 0 and the pinned prefix rules determine the samples. `context_size=4097`
+includes the autoregressive shift, giving a training context of 4096.
 
-For a newly created manifest, `--hash-mode sampled` is an explicitly weaker diagnostic option: it
-hashes every index array and metadata file, but only three blocks of the large
-token file. Canonical release staging requires the default full hashing. Reusing an existing
-manifest preserves its original integrity mode instead of silently changing its
-identity. The complete source remains untouched when staging fewer new epochs or
-compacting to a separate output.
+One-epoch and four-epoch sampling produce identical first-epoch token sequences
+in the same order. Their compact token files and offsets can differ because the
+four-epoch artifact contains additional selected rows. Reusing the published
+four-epoch artifact provides one byte identity across all tracks.
 
-This machine's local corpus contains additional chat/code data; its tokenizer and
-prefix mix differ from the public pinned recipe. Its manifest labels it
-`operator_supplied_local_tokenized`, and a training smoke test on it does not
-establish results for the canonical public recipe. The local `sample_tokenized.py`
-is identical to the pinned public sampler. The local, untracked
-`encdec_sample_tokenized.py` produces separate instruction/response context lengths
-and metadata; it is incompatible with public HRM-Text's PrefixLM loader, which
-requires `max_seq_len` and a combined context bound. Use `sample_tokenized.py`.
+`prepare_data.py` validates arrays and writes full SHA-256 hashes of sampled
+files, tokenizer and sampler, plus epoch token/row counts and source array size
+inventory. `metadata.json.total_length` is the mean over available epochs;
+`validation.epochs` records exact per-epoch totals. Source size inventory alone
+does not authenticate all original tokenized bytes: the released sampled files
+are fully hashed. `--hash-mode sampled` remains diagnostic only and is not
+accepted by the canonical release downloader.
 
-## Public training data versus verifier data
+`--existing-sampled` validates a completed sample without resampling and preserves
+an existing finalized manifest byte-for-byte. `--epochs` affects new sampling
+only. The `encdec_sample_tokenized.py` alternative is incompatible with the
+PrefixLM loader's combined-context metadata; use `sample_tokenized.py`.
 
-Only the pretraining corpus and matching frozen tokenizer belong in the public
-environment. Prepare benchmark snapshots separately using the verifier's pinned
-dataset revisions, splits, evaluation code, and evaluation settings. The verifier
-staging script serializes prompts and labels under `tests/staged` with a separate
-manifest; scoring those records works offline without a Hugging Face dataset cache.
-The operator's download cache remains separate. Do not copy a
-shared `HF_HOME` into the public image: it may include benchmark answers, model
-weights, or credentials. The verifier receives the frozen tokenizer but must not
-mount benchmark records or their download cache into the training container.
-Enable offline Hugging Face mode at runtime.
-No pretrained checkpoint is part of the training data build.
+The older cleaned-HF/tokenization path in `prepare_data.py` is retained for
+reproduction work. It downloads the pinned cleaned `data/` and `data_clustered/`
+snapshot, requires Rust/Cargo, authenticates completed tokenization caches, and
+uses the public BPE tokenizer. That historical corpus/tokenizer recipe is a
+different lineage from this task's sampled release and cannot substitute for it.
+Its `--stage` option rewrites a copied metadata path and seals the changed
+manifest; the canonical sampled downloader requires no such rewrite.
+
+## Training data and verifier data
+
+Prepare benchmark records separately under `tests/staged` using the verifier's
+pinned revisions and settings. Frozen benchmark records can be evaluated offline
+without a Hugging Face dataset cache. Never copy a shared `HF_HOME` into a Work
+image: it can contain benchmark answers, weights or credentials. The training
+container receives only the sampled corpus and frozen tokenizer. Enable offline
+Hugging Face mode at runtime.
 
 ## Data regression checks
 
 ```bash
-python -m unittest discover -s environment/setup -p 'test_*.py' -v
+HRM_DATA_IO_TEST_ROOT=/path/to/pinned/data_io \
+  python -m unittest discover -s environment/setup -p 'test_*.py' -v
 ```
 
-Compaction tests need only NumPy and small temporary arrays. Sampling-prefix tests
-use the pinned `data_io` checkout from `/var/tmp/hrm-text-data/data_io`, or from
-`HRM_DATA_IO_TEST_ROOT`; they skip explicitly if that checkout is unavailable.
-They do not download a corpus, access GPUs, or modify existing training data.
+Tests use tiny arrays and mock/cache-only Hub access. They cover full manifest
+and file authentication, incomplete/mixed assets, copied snapshot regular files,
+no-overwrite behavior, offline staging, dev sampler sequence-prefix parity,
+compaction and tokenization cache integrity. They do not access GPUs or change
+existing training data. Sampler tests skip explicitly if the pinned checkout is
+unavailable.

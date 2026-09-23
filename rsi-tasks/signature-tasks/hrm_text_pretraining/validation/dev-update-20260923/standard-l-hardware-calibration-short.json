@@ -1,0 +1,211 @@
+{
+  "baseline_batch": {
+    "global_batch_size": 147456,
+    "global_microbatch_tokens": 147456,
+    "gradient_accumulation_steps": 1,
+    "microbatch_tokens": 18432
+  },
+  "baseline_config": {
+    "arch": {
+      "H_cycles": 2,
+      "H_override": {},
+      "L_cycles": 3,
+      "bp_max_steps": 6,
+      "bp_min_steps": 2,
+      "bp_warmup_ratio": 0.5,
+      "expansion": 4,
+      "half_layers": true,
+      "head": "lm_head@LMHead",
+      "hidden_size": 1280,
+      "init_type": "lecun_normal",
+      "n_layers": 24,
+      "name": "baselines.hrm_nocarry_bp_warmup@HierarchicalReasoningModel",
+      "norm_eps": 1e-06,
+      "norm_type": "pre",
+      "num_heads": 10,
+      "pos_emb_type": "rope",
+      "rope_theta": 10000.0
+    },
+    "beta1": 0.9,
+    "beta2": 0.95,
+    "checkpoint_interval": 1,
+    "checkpoint_path": "/sg-pretrain/one/hrm-text-rsi-update-20260923/runs/standard-l-calibration-canonical",
+    "data": {
+      "path": "/sg-pretrain/one/hrm-text-rsi-update-20260923/release/sampled",
+      "target_only": true
+    },
+    "ema": 0.9995,
+    "epochs": 2,
+    "fwd_bwd_dtype": "bfloat16",
+    "global_batch_size": 147456,
+    "log_interval": 1,
+    "lr": 0.00022,
+    "lr_min_ratio": 1.0,
+    "lr_warmup_steps": 2000,
+    "project_name": "RSI-HRM-Text",
+    "resume_epoch": null,
+    "resume_from": null,
+    "run_name": "standard-l-calibration-canonical",
+    "seed": 0,
+    "weight_decay": 0.1,
+    "weights_only_resume_from_ema": false
+  },
+  "clock": "synchronized_training_minus_compile",
+  "data_manifest_sha256": "d9e9ed1f7889541e35c70923940a7e8682976b26bfbef2c16e9dc743820f7635",
+  "estimated_baseline_compute_seconds": 145809.81250908412,
+  "excluded_compilation_seconds": 130.9380319789052,
+  "gpus_per_node": 8,
+  "hardware": {
+    "gpu_name": "NVIDIA H100 80GB HBM3",
+    "gpus_per_node": 8,
+    "nodes": 1,
+    "ranks": [
+      {
+        "capability": [
+          9,
+          0
+        ],
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "hostname": "di-20260421001315-6fphm",
+        "rank": 0,
+        "total_memory_bytes": 84942979072
+      },
+      {
+        "capability": [
+          9,
+          0
+        ],
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "hostname": "di-20260421001315-6fphm",
+        "rank": 1,
+        "total_memory_bytes": 84942979072
+      },
+      {
+        "capability": [
+          9,
+          0
+        ],
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "hostname": "di-20260421001315-6fphm",
+        "rank": 2,
+        "total_memory_bytes": 84942979072
+      },
+      {
+        "capability": [
+          9,
+          0
+        ],
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "hostname": "di-20260421001315-6fphm",
+        "rank": 3,
+        "total_memory_bytes": 84942979072
+      },
+      {
+        "capability": [
+          9,
+          0
+        ],
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "hostname": "di-20260421001315-6fphm",
+        "rank": 4,
+        "total_memory_bytes": 84942979072
+      },
+      {
+        "capability": [
+          9,
+          0
+        ],
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "hostname": "di-20260421001315-6fphm",
+        "rank": 5,
+        "total_memory_bytes": 84942979072
+      },
+      {
+        "capability": [
+          9,
+          0
+        ],
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "hostname": "di-20260421001315-6fphm",
+        "rank": 6,
+        "total_memory_bytes": 84942979072
+      },
+      {
+        "capability": [
+          9,
+          0
+        ],
+        "gpu_name": "NVIDIA H100 80GB HBM3",
+        "hostname": "di-20260421001315-6fphm",
+        "rank": 7,
+        "total_memory_bytes": 84942979072
+      }
+    ]
+  },
+  "hrm_commit": "c2865cf8df3caf53b6ec44a223fdccc4d276a20e",
+  "measured_compute_seconds": 18.994892232120037,
+  "measured_steps": 30,
+  "method": "measured_schedule_projection",
+  "metrics_sha256": "d1998cf368451b364fe3a2c16e06c1aecfbdb632b6d0fc615bf4eed5f3339499",
+  "nodes": 1,
+  "projection": {
+    "estimated_baseline_compute_seconds": 145809.81250908412,
+    "phase_measurements": {
+      "2": {
+        "max_compute_seconds": 0.32091809064149857,
+        "mean_compute_seconds": 0.3161691967397928,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.3080570325255394,
+        "scheduled_steps": 25990
+      },
+      "3": {
+        "max_compute_seconds": 0.3806421756744385,
+        "mean_compute_seconds": 0.37138875387609005,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.36249151080846786,
+        "scheduled_steps": 25991
+      },
+      "4": {
+        "max_compute_seconds": 0.4349699467420578,
+        "mean_compute_seconds": 0.42507588118314743,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.4141746759414673,
+        "scheduled_steps": 25991
+      },
+      "5": {
+        "max_compute_seconds": 0.4906289279460907,
+        "mean_compute_seconds": 0.48117868416011333,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.47234808653593063,
+        "scheduled_steps": 25990
+      },
+      "6": {
+        "max_compute_seconds": 1.5255297869443893,
+        "mean_compute_seconds": 1.0040574502199888,
+        "measured_steps": 4,
+        "min_compute_seconds": 0.5219864845275879,
+        "scheduled_steps": 103964
+      }
+    },
+    "sample_max_projection_seconds": 200890.8604567051,
+    "uncertainty_note": "Short phase samples; projection assumes stationary execution and an estimated packed update count. Sample maxima are not a statistical confidence bound."
+  },
+  "run_sha256": "29691375bd1c4ab5aaed319b7f06d04bfc01252fbb29a145e60349478da7b471",
+  "runner_source_sha256": {
+    "calibrate.py": "eeb3560b9d583bec46238cbb38362a4c347d43c77412c3baffe68416cad44219",
+    "compute_budget.py": "2ecb2a82eb3342a97a8b6f47f51468c61ee92db0ce3a08bf0cd3186a6f88e4ff",
+    "profiles.py": "15d8a2cf59bb9161f44d5648a74dcf2e4cb88770be34bc8da8a33556f8293770",
+    "train.py": "d5cc528cd12df69b7dbb39c87346cd8d98ac8ecf3a47456087cc2bb7419825b6"
+  },
+  "schedule_token_estimate": {
+    "basis": "selected_epoch_manifest_raw_lengths",
+    "epoch_raw_tokens": [
+      15329902486,
+      15330035551
+    ],
+    "tokens": 30659938037
+  },
+  "schedule_total_steps": 207926,
+  "schema_version": 1,
+  "track": "standard-l"
+}
